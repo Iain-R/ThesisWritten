@@ -153,7 +153,7 @@ This model is an updated version of the Mixed Integer model with only one added 
 \begin{align}
 \label{MIP:Data Valid}
 Z_{jk}  = \begin{cases} 1& \text{if movement from $n$ to $s$ is valid}\\
-0& \text{Otherwise}   \end{cases} 
+0 & \text{Otherwise}   \end{cases} 
 \quad \forall n \in N s\in S
 \end{align}
 This data is an $m\times s$ array of binary values, such that if the dragline is ableto feasibly reach the section of spoil when mining the section $m$ of overburden then the arrays value is 1 and 0 otherwise. This array is currently based on the feasible  maximum and minimum reach of the dragline, however other factors such as the pit edge while starting a new block, or having to move over sections in the spoil may cause this array to become more complex. Updating and improving this data should be of high importance for an accurate model, however as it is not integral to how the algorithm works, some simplifications can be made.
@@ -184,10 +184,11 @@ Here the array size is set up, we only consider areas within the block and spoil
 
 
 \subsection{Dynammic Programming}
+Dynammic programming is another potent
 \subsubsection{Model Formulation}
 \paragraph*{States}
 \begin{align}
-\label{state1}
+\label{Stte}
 S \quad \text{State of spoil at current stage}
 \end{align}
 The state of a formulation is the current resources of remaining in a resource constrained dynammic program. Here this is the spoil channel, which will change with every action and therefore is updated at every stage, this state alongside the current stage should be stored in the memory so that the process of memotisation can occur. This technique uses the princeple of optimality to reduce the amount of calcualtions required, that is if we have already calculated the optimal path for the block from this stage with the current states then the solution is already known and that branch of exploration can be completed. However the only state in this formulation is the amount of spoil in each section at the current stage, the use of this state is vital as it is used for the constraint on the actions available at each point. The spoil is a state as it will change with each action, nothing else will change depending on the action taken and therefore all other dynammic variables are simply stages. 
@@ -204,9 +205,16 @@ The stages of the model are something that we do not have control over, each act
 \paragraph*{Transistion Function}
 \begin{align}
 \label{Transition}
-1+1=2
+S_{stage+1}(s)=S_{stage+1}(s)\times SEf  \text{where $s$ is the spoil section in action }
 \end{align}
+The transition value allows the next state to be calculated based on the current state and the action chosen. Here the action chosen is the movment of overburden from the current block to some point on the spoil $s$, this action will succeed in adding additonal overburden to the relevant section on the spoil, updating this is simple and from here the only additional peice of information required is the constraint that this tranistion fucntion cannot create a state that exceeds the spoil capacity, this is done by simply checking the suggested next state and adding a large cost if this constraint is violated. 
 \paragraph*{Value Function}
+\begin{align}
+\label{value}
+C_A = \arctan(\frac{abs(D-A)}{Reach})\\
+V_t(S_t) = \min (C_A+V_t(S_{t+A}))
+\end{align}
+The value function calculates the cost associated with agiven action based on the cost of the action and the resulting states for all future stages, the cost of an action is simply the swingtime from the current block to the spoil selected as an action. This cost is to be minimised however will also affect the state of the next action, as such this will recursivley consider all potential courses of action for each action taken. Therefore teh more actions that can be made the more computation time is required to calculate the cost of a block. 
 \subsubsection{Implementation}
 \begin{lstlisting}[language=python]
 _Bucket ={}
