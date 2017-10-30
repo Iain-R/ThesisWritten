@@ -1,0 +1,420 @@
+\ifglsentryexists{mems}{}%
+{%
+\gls@defglossaryentry{mems}%
+{%
+name={MEMS},%
+sort={MEMS},%
+type={main},%
+first={Micro Electric Mechanical System(MEMS)},%
+firstplural={Micro Electric Mechanical Systems(MEMSs)},%
+text={MEMS},%
+plural={MEMSs},%
+description={Micro Electric Mechanical System},%
+descriptionplural={Micro Electric Mechanical System\acrpluralsuffix },%
+symbol={\relax },%
+symbolplural={\relax },%
+user1={},%
+user2={},%
+user3={},%
+user4={},%
+user5={},%
+user6={},%
+long={Micro Electric Mechanical System},%
+longplural={Micro Electric Mechanical Systems},%
+short={MEMS},%
+shortplural={MEMSs},%
+counter={page},%
+parent={},%
+%
+}%
+}%
+\ifglsentryexists{tdoa}{}%
+{%
+\gls@defglossaryentry{tdoa}%
+{%
+name={TDOA},%
+sort={TDOA},%
+type={main},%
+first={Time Difference of Arrival(TDOA)},%
+firstplural={Time Difference of Arrivals(TDOAs)},%
+text={TDOA},%
+plural={TDOAs},%
+description={Time Difference of Arrival},%
+descriptionplural={Time Difference of Arrival\acrpluralsuffix },%
+symbol={\relax },%
+symbolplural={\relax },%
+user1={},%
+user2={},%
+user3={},%
+user4={},%
+user5={},%
+user6={},%
+long={Time Difference of Arrival},%
+longplural={Time Difference of Arrivals},%
+short={TDOA},%
+shortplural={TDOAs},%
+counter={page},%
+parent={},%
+%
+}%
+}%
+\ifglsentryexists{fft}{}%
+{%
+\gls@defglossaryentry{fft}%
+{%
+name={FFT},%
+sort={FFT},%
+type={main},%
+first={Fast Fourier Transform(FFT)},%
+firstplural={Fast Fourier Transforms(FFTs)},%
+text={FFT},%
+plural={FFTs},%
+description={Fast Fourier Transform},%
+descriptionplural={Fast Fourier Transform\acrpluralsuffix },%
+symbol={\relax },%
+symbolplural={\relax },%
+user1={},%
+user2={},%
+user3={},%
+user4={},%
+user5={},%
+user6={},%
+long={Fast Fourier Transform},%
+longplural={Fast Fourier Transforms},%
+short={FFT},%
+shortplural={FFTs},%
+counter={page},%
+parent={},%
+%
+}%
+}%
+\ifglsentryexists{dft}{}%
+{%
+\gls@defglossaryentry{dft}%
+{%
+name={DFT},%
+sort={DFT},%
+type={main},%
+first={Discrete Fourier Transform(DFT)},%
+firstplural={Discrete Fourier Transforms(DFTs)},%
+text={DFT},%
+plural={DFTs},%
+description={Discrete Fourier Transform},%
+descriptionplural={Discrete Fourier Transform\acrpluralsuffix },%
+symbol={\relax },%
+symbolplural={\relax },%
+user1={},%
+user2={},%
+user3={},%
+user4={},%
+user5={},%
+user6={},%
+long={Discrete Fourier Transform},%
+longplural={Discrete Fourier Transforms},%
+short={DFT},%
+shortplural={DFTs},%
+counter={page},%
+parent={},%
+%
+}%
+}%
+\ifglsentryexists{vga}{}%
+{%
+\gls@defglossaryentry{vga}%
+{%
+name={VGA},%
+sort={VGA},%
+type={main},%
+first={Video Graphics Array(VGA)},%
+firstplural={Video Graphics Arrays(VGAs)},%
+text={VGA},%
+plural={VGAs},%
+description={Video Graphics Array},%
+descriptionplural={Video Graphics Array\acrpluralsuffix },%
+symbol={\relax },%
+symbolplural={\relax },%
+user1={},%
+user2={},%
+user3={},%
+user4={},%
+user5={},%
+user6={},%
+long={Video Graphics Array},%
+longplural={Video Graphics Arrays},%
+short={VGA},%
+shortplural={VGAs},%
+counter={page},%
+parent={},%
+%
+}%
+}%
+\ifglsentryexists{music}{}%
+{%
+\gls@defglossaryentry{music}%
+{%
+name={MUSIC},%
+sort={MUSIC},%
+type={main},%
+first={Multiple Sound Source Identification(MUSIC)},%
+firstplural={Multiple Sound Source Identifications(MUSICs)},%
+text={MUSIC},%
+plural={MUSICs},%
+description={Multiple Sound Source Identification},%
+descriptionplural={Multiple Sound Source Identification\acrpluralsuffix },%
+symbol={\relax },%
+symbolplural={\relax },%
+user1={},%
+user2={},%
+user3={},%
+user4={},%
+user5={},%
+user6={},%
+long={Multiple Sound Source Identification},%
+longplural={Multiple Sound Source Identifications},%
+short={MUSIC},%
+shortplural={MUSICs},%
+counter={page},%
+parent={},%
+%
+}%
+}%
+\ifglsentryexists{tdoa}{}%
+{%
+\gls@defglossaryentry{tdoa}%
+{%
+name={TDOA},%
+sort={TDOA},%
+type={main},%
+first={Time Difference of Arrival(TDOA)},%
+firstplural={Time Difference of Arrivals(TDOAs)},%
+text={TDOA},%
+plural={TDOAs},%
+description={Time Difference of Arrival},%
+descriptionplural={Time Difference of Arrival\acrpluralsuffix },%
+symbol={\relax },%
+symbolplural={\relax },%
+user1={},%
+user2={},%
+user3={},%
+user4={},%
+user5={},%
+user6={},%
+long={Time Difference of Arrival},%
+longplural={Time Difference of Arrivals},%
+short={TDOA},%
+shortplural={TDOAs},%
+counter={page},%
+parent={},%
+%
+}%
+}%
+\ifglsentryexists{ccf}{}%
+{%
+\gls@defglossaryentry{ccf}%
+{%
+name={CCF},%
+sort={CCF},%
+type={main},%
+first={Cross Correlation Function(CCF)},%
+firstplural={Cross Correlation Functions(CCFs)},%
+text={CCF},%
+plural={CCFs},%
+description={Cross Correlation Function},%
+descriptionplural={Cross Correlation Function\acrpluralsuffix },%
+symbol={\relax },%
+symbolplural={\relax },%
+user1={},%
+user2={},%
+user3={},%
+user4={},%
+user5={},%
+user6={},%
+long={Cross Correlation Function},%
+longplural={Cross Correlation Functions},%
+short={CCF},%
+shortplural={CCFs},%
+counter={page},%
+parent={},%
+%
+}%
+}%
+\ifglsentryexists{gcc}{}%
+{%
+\gls@defglossaryentry{gcc}%
+{%
+name={GCC},%
+sort={GCC},%
+type={main},%
+first={Generalised Cross Correlation(GCC)},%
+firstplural={Generalised Cross Correlations(GCCs)},%
+text={GCC},%
+plural={GCCs},%
+description={Generalised Cross Correlation},%
+descriptionplural={Generalised Cross Correlation\acrpluralsuffix },%
+symbol={\relax },%
+symbolplural={\relax },%
+user1={},%
+user2={},%
+user3={},%
+user4={},%
+user5={},%
+user6={},%
+long={Generalised Cross Correlation},%
+longplural={Generalised Cross Correlations},%
+short={GCC},%
+shortplural={GCCs},%
+counter={page},%
+parent={},%
+%
+}%
+}%
+\ifglsentryexists{AAS}{}%
+{%
+\gls@defglossaryentry{AAS}%
+{%
+name={AAS},%
+sort={AAS},%
+type={main},%
+first={Acoustic Acquisition System(AAS)},%
+firstplural={Acoustic Acquisition Systems(AASs)},%
+text={AAS},%
+plural={AASs},%
+description={Acoustic Acquisition System},%
+descriptionplural={Acoustic Acquisition System\acrpluralsuffix },%
+symbol={\relax },%
+symbolplural={\relax },%
+user1={},%
+user2={},%
+user3={},%
+user4={},%
+user5={},%
+user6={},%
+long={Acoustic Acquisition System},%
+longplural={Acoustic Acquisition Systems},%
+short={AAS},%
+shortplural={AASs},%
+counter={page},%
+parent={},%
+%
+}%
+}%
+\ifglsentryexists{SNR}{}%
+{%
+\gls@defglossaryentry{SNR}%
+{%
+name={SNR},%
+sort={SNR},%
+type={main},%
+first={Signal to Noise Ratio(SNR)},%
+firstplural={Signal to Noise Ratios(SNRs)},%
+text={SNR},%
+plural={SNRs},%
+description={Signal to Noise Ratio},%
+descriptionplural={Signal to Noise Ratio\acrpluralsuffix },%
+symbol={\relax },%
+symbolplural={\relax },%
+user1={},%
+user2={},%
+user3={},%
+user4={},%
+user5={},%
+user6={},%
+long={Signal to Noise Ratio},%
+longplural={Signal to Noise Ratios},%
+short={SNR},%
+shortplural={SNRs},%
+counter={page},%
+parent={},%
+%
+}%
+}%
+\ifglsentryexists{COTS}{}%
+{%
+\gls@defglossaryentry{COTS}%
+{%
+name={COTS},%
+sort={COTS},%
+type={main},%
+first={Commercial Off The Shelf(COTS)},%
+firstplural={Commercial Off The Shelfs(COTSs)},%
+text={COTS},%
+plural={COTSs},%
+description={Commercial Off The Shelf},%
+descriptionplural={Commercial Off The Shelf\acrpluralsuffix },%
+symbol={\relax },%
+symbolplural={\relax },%
+user1={},%
+user2={},%
+user3={},%
+user4={},%
+user5={},%
+user6={},%
+long={Commercial Off The Shelf},%
+longplural={Commercial Off The Shelfs},%
+short={COTS},%
+shortplural={COTSs},%
+counter={page},%
+parent={},%
+%
+}%
+}%
+\ifglsentryexists{ROS}{}%
+{%
+\gls@defglossaryentry{ROS}%
+{%
+name={ROS},%
+sort={ROS},%
+type={main},%
+first={Robotic Operating System(ROS)},%
+firstplural={Robotic Operating Systems(ROSs)},%
+text={ROS},%
+plural={ROSs},%
+description={Robotic Operating System},%
+descriptionplural={Robotic Operating System\acrpluralsuffix },%
+symbol={\relax },%
+symbolplural={\relax },%
+user1={},%
+user2={},%
+user3={},%
+user4={},%
+user5={},%
+user6={},%
+long={Robotic Operating System},%
+longplural={Robotic Operating Systems},%
+short={ROS},%
+shortplural={ROSs},%
+counter={page},%
+parent={},%
+%
+}%
+}%
+\ifglsentryexists{fft}{}%
+{%
+\gls@defglossaryentry{fft}%
+{%
+name={FFT},%
+sort={FFT},%
+type={main},%
+first={Fast Fourier Transform(FFT)},%
+firstplural={Fast Fourier Transforms(FFTs)},%
+text={FFT},%
+plural={FFTs},%
+description={Fast Fourier Transform},%
+descriptionplural={Fast Fourier Transform\acrpluralsuffix },%
+symbol={\relax },%
+symbolplural={\relax },%
+user1={},%
+user2={},%
+user3={},%
+user4={},%
+user5={},%
+user6={},%
+long={Fast Fourier Transform},%
+longplural={Fast Fourier Transforms},%
+short={FFT},%
+shortplural={FFTs},%
+counter={page},%
+parent={},%
+%
+}%
+}%

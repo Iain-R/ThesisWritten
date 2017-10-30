@@ -1,0 +1,253 @@
+% preamble
+\documentclass[12pt, openany, a4paper]{book}
+\usepackage[utf8]{inputenc}
+\usepackage{graphicx}
+\usepackage[a4paper]{geometry}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{enumerate}
+\usepackage[english]{babel}
+\usepackage{titlesec}
+\usepackage{sidecap}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{glossaries}
+\usepackage{float}
+\usepackage{lipsum}  
+\usepackage{listings}
+\usepackage{setspace}
+
+\usepackage[linesnumbered,ruled,vlined]{algorithm2e}
+% \usepackage{gensymb}
+\makeglossaries
+\usepackage[numbers]{natbib}
+% resources
+\graphicspath{ {Images/} }
+\setcounter{secnumdepth}{4}
+\setlength{\parindent}{0em}
+\setlength{\parskip}{10pt}
+\renewcommand{\baselinestretch}{1.5}
+\raggedbottom
+
+
+\usepackage{color}
+ 
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{1,1,1}
+ 
+\lstdefinestyle{mystyle}{
+    backgroundcolor=\color{backcolour},   
+    commentstyle=\color{codegreen},
+    keywordstyle=\color{magenta},
+    numberstyle=\tiny\color{codegray},
+    stringstyle=\color{codepurple},
+    basicstyle=\footnotesize,
+    breakatwhitespace=false,         
+    breaklines=true,                 
+    captionpos=b,                    
+    keepspaces=true,                 
+    numbers=left,                    
+    numbersep=5pt,                  
+    showspaces=false,                
+    showstringspaces=false,
+    showtabs=false,                  
+    tabsize=2
+}
+ 
+\lstset{style=mystyle}
+
+
+\begin{document}
+\frontmatter
+
+%title page
+\begin{titlepage}
+\newgeometry{left=3cm, right=2.5cm, top=2cm, bottom=2cm}
+\centering
+
+%\includegraphics{UQ_Logo.png}\par
+\vspace{4cm}
+{\huge\bfseries Optimisation of Dragline Block Lengths \par}
+\vspace{3cm}
+{\Large\itshape Iain Rudge\par}
+\vspace {5mm} 
+{School of Mechanical Engineering \\ The University of Queensland\par}
+\vfill
+supervised by\\
+Dr.~Michael \textsc{Kearney} (UQ)
+\vfill
+{\large \today\par}
+\end{titlepage}
+\restoregeometry
+
+
+\cleardoublepage
+
+% Letter to Head of School
+
+% \begin{flushright}
+% 	ADDRESS LINE 1\\
+% 	ADDRESS LINE 2\\
+% 	Tel.\ (07) nnnn nnnn\\
+% 	\medskip
+% 	\today
+% \end{flushright}
+\begin{flushleft}
+  Dr. Ross McAree\\
+  Head of School\\
+  School of Mechanical Engineering\\
+  The University of Queensland\\
+  St Lucia, QLD 4072\\
+  \bigskip\bigskip
+  Dear Dr McAree,
+\end{flushleft}
+
+In accordance with the requirements of the degree of Bachelor of
+Engineering in the division of 
+Mechatronics
+
+I present the
+following thesis entitled ``Optimisation of Dragline Block Lengths''.  This work was performed  under the supervision of
+Dr Michael Kearney  of the School of Mech Mining at UQ.
+
+I declare that the work submitted in this thesis is my own, except as
+acknowledged in the text and footnotes, and has not been previously
+submitted for a degree at The University of Queensland or any other
+institution.
+
+\begin{flushright}
+	Yours sincerely,\\
+	\medskip
+	\medskip
+	\medskip
+Iain Rudge
+\end{flushright}
+
+\cleardoublepage
+
+
+
+
+\chapter{Acknowledgements}
+
+
+
+
+\cleardoublepage
+
+\chapter{Abstract}
+
+% Notice that all \include files are chapters -- a logical division.
+% But not all chapters are \include files; some chapters are short
+% enough to be in-lined in the main file.
+
+
+\singlespacing
+\tableofcontents
+\renewcommand{\baselinestretch}{1.5}
+
+\listoffigures
+\addcontentsline{toc}{chapter}{List of Figures}
+
+\listoftables
+\addcontentsline{toc}{chapter}{List of Tables}
+\renewcommand{\baselinestretch}{1.5}
+\onehalfspacing
+% If file los.tex begins with ``\chapter{List of Symbols}'':
+% \include{los}
+
+\cleardoublepage
+
+\mainmatter
+
+	\begin{table}[h!]
+	\centering
+	\caption{Variables used in the report}
+	\begin{tabular}{p{5cm} p{11cm}}
+		\textbf{Variable Name} & \textbf{Variable Description}\\ \hline  \\ 
+		Terra(x,y) & The function representing the height of the ground relative to a fixed point (x,y). It is assumed that this function will be a continuous function that is differentiable \\ \hline \\ 
+		Coal(x,y) & A density function representing the density of coal prevalent in a point (x,y) in the mine. This function is not assumed to be continuous or differentiable, however will most likely be represented as a piecewise function.
+		\\ \hline \\
+		MaxBL & A constant, relating the maximum acceptable size of a block's length, this will be dependant on the draglines maximum reach and the movement patterns of the dragline.
+		\\ \hline \\ 
+		MaxBW &  A constant, relating the maximum acceptable size of a block's width, this will be dependant on the draglines maximum reach and the movement patterns of the dragline.
+		\\ \hline \\ 
+		MinBL &  A constant, relating the minimum acceptable size of a block's length, this will be dependant on the draglines maximum reach and the movement patterns of the dragline.
+		\\ \hline \\  
+		MinBW &  A constant, relating the minimum acceptable size of a block's width, this will be dependant on the draglines maximum reach and the movement patterns of the dragline. \\ \hline \\
+		MineL & A constant that is the total length of the mine, it is a necessary variable as it will dictate one of the key constraints in the model. \\ \hline \\
+		MineW & A constant that is the total width of the mine, it is a necessary variable as it will dictate one of the key constraints in the model.\\ \hline \\ Spoil(n,m) & This function is used to represent the amount of spoil generated by block (n,m). It can be stated that the function will be reliant on both Coal(x,y) and Terra(x,y). \\ \hline \\
+		SpoilCap(n,m) & The amount of spoil that can be dumped into the exhausted block (n,m) this will be related in some manner to the amount of material removed from the block previously.
+		\\
+		\hline \\
+		L(n,m) & The length of the nth block in the mth strip, this is one of the variables that our model aims to solve for. This is one of the outputs of the model \\ \hline \\ 
+		W(n,m) & The width of the nth block in the mth strip, this is one of the variables that our model aims to solve for. This is one of the outputs of the model \\ \hline \\ 
+		%		\[Spoil Capacity \in G,Dim\]
+		\label{tab:var}
+	\end{tabular}	
+\end{table}
+\newpage
+\chapter{Introduction}
+\input{Chapters/Introduction}
+
+\chapter{Background}
+\input{Chapters/Background}
+
+\chapter{Literature Review}
+\input{Chapters/Literature_Review}
+
+\chapter{Design and methodology}
+\input{Chapters/Design_and_Methodology}
+
+\chapter{Implementation}
+\input{Chapters/Implementation}
+
+\chapter{Results}
+\input{Chapters/Results}
+
+\chapter{Discussion}
+\input{Chapters/Discussion}
+
+\chapter{Conclusion}
+\input{Chapters/Conclusion}
+
+
+\appendix
+
+% Chapters after the \appendix command are lettered, not numbered.
+% Setting apart the appendices in the table of contents is awkward:
+
+\newpage
+\addcontentsline{toc}{part}{Appendices}
+\mbox{}
+\newpage
+
+% The \mbox{} command between two \newpage commands gives a blank page.
+% In the contents, the ``Appendices'' heading is shown as being on this
+% blank page, which is the page before the first appendix.  This stops the
+% first appendix from be listed ABOVE the word ``Appendices'' in the
+% table of contents.
+
+% \include appendix chapters here.
+
+
+\chapter{Code Listings}
+
+%\lstinputlisting[language=Octave, caption=Delan and Sum Beamformer - MATLAB Simulation, label=code:matlab_sim]{processingTesting_neat.m}
+
+\input{Glossary}
+
+ 
+\clearpage
+\printglossary
+
+\cleardoublepage
+\bibliographystyle{IEEEtranN}
+\bibliography{IEEEabrv,References.bib}
+
+
+
+
+\end{document}

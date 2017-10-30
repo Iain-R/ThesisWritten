@@ -1,0 +1,275 @@
+%!TEX root = ../main.tex
+
+%FLUFF THE INTRO
+\section{Modelling}
+Modelling of a real world system has two motivators, the first is to gather better understanding of the system through mathematics and data analysis, the other is to allow operations such as optimisation and simulation onto the system. However there are challenges that can affect the accuracy of the model, as such careful deliberation should be taken to make good assumptions and simplifications. The assumptions and simplifications that are made will be explained and justified for each relevant algorithm, sub-model and constraint; all of which are needed to properly communicate the model in such a way that is independant of the optimisation techniques used.  
+\\
+The models defined in this section of the report will be used in all optimisation methods attempted, the accuracy of these models is vital to the accuracy of any formulation dependant on them and as such proper considerations and justifications must be made. The models that are discussed here are inherine to the system, they are often constants or functions within larger problem formulations, as such they are simple to change but yet key to the accuracy of the thesis. \\
+The models discussed here are broken into four major sections, proper modelling of spoil distrobution, modelling of movement patterns within a block, modelling of data unique to a dragline and finally the modelling of an action. Each of these catagories aligns with a specific section of a formualtion, and as such can be developed indepentandly of each other. 
+\subsection{Spoil modelling}
+The Spoil or overburden is the strictest constraint on the feasblitly of a strip, as such the modelling of spoil distrobution is vital to the accuracy of a model. The spoil channel can be discretised into sections with a given maximum capacity per section, following this the swell rate of the spoil and expansion factor due to ineffcient spoil placement should also be considered. These three models are the required knowledge to properly consider and implement spoil capacity constraints on a formulation, each model can be seen below. 
+\subsubsection{Spoil Capacity}
+The capacity of a section of spoil is a vital constraint in the formulation of a block model
+\subsubsection{Swell Factor}
+\subsubsection{Spoil Expansion Factor}
+\subsection{Movement through a Block}
+
+\subsection{Dragline Dynamics}
+
+\subsection{Action Cost}
+
+\section{Optimisation at the Block Level}
+In order to model a sequence of blocks it is vital to first develop an accurate model describing the cost and spoil of a block, several methods were considered, each of which was an optimisation problem seeking to minimise the time taken to process the block. The calculation and modelling of a block must be rapid, as this modelling function will be used thousands of times in the calculation of a strip, while storing block costs into memory was originally considered the feasability and cost of a block varies with three inputs, its start and end locations, and the curent state of the spoil. Therefore the amount of unique blocks that can be considered is huge and storing results in memory loses effciency. \\A variety of methods were formulated and the results were compared against one another for both run time and accuracy, in order to verify the accuracy of a model its output is compared to techniques that are outlined in sections \ref{PA:MIP}, \ref{PA:DP} and \ref{PA:GA}. This comparison was done on both real world data and standard data sets that were generated for the purpose of testing. The comparison will focus on the run times of each solution as well as the accuracy of the method proposed. 
+
+\subsection{Mixed Integer Programming}
+Mixed Integer Programming is a somewhat obvious choice for this model, as this technique is already applied in a 3 dimensional enviroment as outlined in section\ref{PA:MIP}, however some changes must be made for this model to be used with the modified density data, as a result while the concept of a MIP was still considered, the problem itself had to be reformulated. Formulation for the model is found in the following section, while developing a MIP it is vital that all constraints and objectives are lineary related to data and variables, otherwise the solver algorithms will not work. The prcess of formulating an approporate model for the block cost is based on the physical movements of a dragline and the constraints that will affect it, while some elements of the formulation were adjusted or ignored, the end formulation is the most accurate model with the data available. 
+\subsubsection{Model Formulation} 
+\paragraph*{Sets}
+\begin{align}
+\label{MIP:Set:S}
+S\qquad \text{Set of all Spoil Sections   } s\in S\\
+\label{MIP:Set:N}
+N\qquad \text{Set of all Mine Sections } m \in M
+\end{align}
+Here the sets are used to represent the discretised mine and spoil sections, while these sets have no effect on the system they are used for ommunication of data and variables. The sizes of sets $S$ and $M$ must be the same as the spoil channel is the results of a prior strip in a mine. The discretisation of the Mine into sections was chosen as the move from a continues model to a discrete model made the modelling of the problem much easier. While some information is lost in this process it is negligible as survey data itself is discrete. The size of the sections themselves are dependant on both survey data and desired accuracy, for the testing of this thesis each section was a metre in length, however if more precision is required then the resoltion could be increased. However the increase in detail and resolution will result in slower calculations of block dimensions as more potential solutions are presented. One metre was selected because it was the resolution of the real world data supplied however as seen in the comparison of results a lower resolution will dramatically speed up the run time of the problem, this could be used in first pass solutions to get an approximation of good results. 
+\paragraph*{Data}
+\begin{align}
+\label{MIP:Data:SF}
+SF \qquad \text{Swell Factor of Spoil}\\
+\label{MIP:Data:Seff}
+SEf \qquad \text{Packing Efficiency of Overburden}\\
+\label{MIP:Data:SpoilCap}
+SpoilCap \qquad \text{Maximum capacity of spoil}\\
+\label{MIP:Data:n}
+n_{j} \qquad \text{Density of overburden at section $j$} \quad \forall m_{j}  \in M\\
+\label{MIP:Data:s}
+s_{j} \qquad \text{Density of overburden at section $j$} \quad \forall s_{j}  \in S\\
+\label{MIP:Cost}
+C_{jk} \qquad \text{Cost of movement from $m_{j}$ to $s_k$ }\\
+\label{MIPDvol}
+Dvol \qquad \text{Volume of overburden moved in one action}
+\end{align}
+The data relevant to the formulation of the MIP is modelled and calculated in section 4.1, in this section models and justifications can be made for each design choice that is made in the accuracy of the data however in this section the way that the data is used is much more important. The data used is relativly simple, often represented as either a constant or an array of constants. The use of data \ref{MIP:Data:SF} to represent the swell of spoil is vital to the proper modelling of spoil distrobution and will be used whenever interacting with the spoil output of the system, this data is simply a constant value, as suggested in the prior section. Similarly data from \ref{MIP:Data:Seff} is used as a n approximate model for teh expansion of the spoil due to ineffciencies in stacking methods, this constant can vary depending on the model used however is simply represented in the formulation of this problem and is not a key data point for intial testing, rather it is important for the accuracy of the spoil channel distrobution, which itself is also dependant on data \ref{MIP:Data:SpoilCap} or the maximum capacity of the spoil at any given section $s$, here we assums that this capacity is constant throughout the spoil chanel, however this could be easily adapted if needed for varying capacities. This capacity is used in constraint \ref{MIP:SPcap} as the right hand side of the equation. Sensitivity analysis could be done on this constraint to estimate the potential benifits of increasing the capacity of spoil available, this would have the same effect as increasing the effciency of the spoil stacking methods, as described by a lower value of data\ref{MIP:Data:Seff}.\\
+The amount of material moved per action can be found in data \ref{MIPDvol}, while a very simplistic peince of information it is still necissarry to include as it represents the amount of overburden moved per action through the size of the draglines bucket. Sensitivity analysis could also be done to relate how the changing size of this constant affects the mining time of a block, icreasing this constraint should reduce the cost of the block as it will reduce the amount of actions required to remove the overburden from a mine section. This cost is found in data \ref{MIP:Cost}however this data is an $m\times s$ array that contains the movement cost from each point $m\in M$ to each spoil section $s \in S$, the movement cost is used in the objective function to minimize the total swingtime of the dragline inside a block. This cost data can be calculated as a function $\arctan(\frac{abs(n-s)}{Reach})$ however this may also be precalculated and put into an array to reduce function calls, the latter method was selected for the implementation of this data. 
+\\
+The representation of the mine\ref{MIP:Data:n} is an $1\times m$ array where the value at each point is the average amount of overburden to be removed at that point, this value will not change as we will never come back to or refer to a sectiononce the overburden has been removed. Unlike this is data \ref{MIP:Data:s} which represents the amount of overburden currently in the spoil. Once a block is calclulated this spoil value is updated so that future blocks use the spoil ouput of the previous block to hae a consistent and proper model for the spoil distrobution throughout the strip. Therefore while this data will not change during the calculations performed on the block, once the solution is calculated this data is updated to reflect on the resultant spoil. 
+\paragraph*{Variables}
+\begin{align}
+\label{MIP:M2S}
+X_{jk} \qquad \text{Overburden moved from $m_{j}$ to $s_k$ }\\
+\label{MIP:MCeil}
+Y_{jk} \qquad \text{Actions moving from $m_{j}$ to $s_k$ }
+\end{align}
+The variabes for this model are both related to the movement of overburden from a moint $m$ in the mine to a point $s$ in the spoil. Variable \ref{MIP:M2S} refers to the capcaity of dragline volume that is moved from $m$ to $s$. This is necissary for the calculation of spoil capacity constraints as well as the calculation of removal of overburden from the mine at point $m$. However the assumption is made that movement actions taken at any capacity will still incure the same costs. It is for this reason that variable \ref{MIP:MCeil} is used, representing the ceiling of actions taken from point $m$ to point $s$ for all points in the mine. This variable is exsclusvly used in the objective function, participating only in constraints that allow it to be linked to \ref{MIP:M2S}.
+\paragraph*{Objective}
+\begin{align}
+\label{MIP:OBJ}
+\min\left(\sum_{m\in M}\sum_{s\in S} (C_{n,s}\times Y_{n,s})\right)
+\end{align}
+The objective function of the Mixed integer linear program is simple, the minimisation of time taken to complete all actions. As some actions will cost more than others it becomes obvious that the cheapest possible movement will be selected when available, it should be noted that while cost\ref{MIP:Cost} is not linear, its relationship with movement actions \ref{MIP:MCeil} is, allowing linar programming to be used. The minimization of this is obvious, as smaller movement actions will take less time than a larger swing action, they will be preffered where feasible. 
+\paragraph*{Constraints}
+\begin{align}
+\label{MIP:RemoveAll}
+\sum_{s}X_{m,s}\times Dvol = M_{m}  \quad \forall m\in M  \\
+\label{MIP:SPcap}
+\sum_{m\in M} X_{m,s}\times SEf \times SF + S_s\leq SpoilCap \quad \forall s \in S \\ 
+\label{MIP:Link}
+X_{m,s} \leq Y_{\mu,s} \quad \forall m,s \in M,S\\
+\label{MIP:Housekeeping}
+X_{m,s} \geq 0 \qquad \forall m \in M , s \in S\\
+Y_{m,s} \in \mathbb{N} \qquad \forall m \in M , s \in S
+\end{align}
+The constraints on the model could be considered as the most interesting part of the model, with no constraints the model would simply choose to perform no actions, as this is the minimal allowable solution. Therefore the minimum amount of work done by the dragline must be constrained, the strict constraint fouun in  equation \ref{MIP:RemoveAll} states that all overburden must be removed from a section $m$ for all sections in the mine. The purpose of this constraint is to set the exact amount of work done by the dragline, it must remove all overburden from the block, but cannot remove any additional material from the block, while the latter is less likely as this would increase the cost of operation it is still best to have as strict a constraint as possible. \\
+The constraint described in equaion \ref{MIP:SPcap} constrains the solution the most of any constraint in not only the Block model but the entire thesis, it is the feasability constraint that the spoil capacity cannot be exceeded, it should be noted that this constraint also takes into account the state of the spoi prior to this block, allowing past blocks actions to carry over. This constraint will invalidate many solutions and cause the cost of action to go up if all local spoil sections are at or close to capacity, this constraint is what drives up the cost in the calculation of a block. 
+\\ Constraint \ref{MIP:Link} is the linking constraint between $X$\ref{MIP:M2S} and $Y$\ref{MIP:MCeil}, it ensures that $Y$ is the cieling of $X$. As the objective is a minimisation problem, then $Y$ will seek to be the lowest allowable integer value greater than or equal to $X$, this linking constraint ties constraints \ref{MIP:RemoveAll} and \ref{MIP:SPcap} which are both dependant on $X$ to the objective function \ref{MIP:OBJ} which is dependant on $Y$. Similarly constraints \ref{MIP:Housekeeping} simply state that $X$ must be a positive real number and $Y$ must be an integer greater than or equal to zero, these constraints are simply to properly set up the variables for the model. 
+\subsubsection{Implementation}
+[Put Code Here]
+\begin{lstlisting}[language=Python]
+		m = G.Model()
+		X = {(n,s):m.addVar() for n in self.N for s in self.S}
+		Y = {(n,s):m.addVar(vtype = G.GRB.INTEGER) for n in self.N for s in self.S}
+		m.setObjective(G.quicksum((self.MoveCost(n,s)*Y[n,s]) for n in self.N for s in self.S),G.GRB.MINIMIZE)
+
+		CreateCieling = {(n,s):X[n,s]<=Y[n,s] for n in self.N for s in self.S}
+
+		RemoveOnlyallowed = {
+		(n):m.addConstr(G.quicksum(X[n,s]*self.Dragline.get_BucketVol() for s in self.S)==self.Mine[n]) for n in self.N
+		}
+
+		spoilcapacity = {
+		(s):m.addConstr(G.quicksum(X[n,s]*self.Dragline.get_BucketVol()*self.swell*self.expand for n in self.N)+self.Spoil[s]<=self.spoilcap)
+		for s in self.S
+		}
+
+		m.optimize()
+\end{lstlisting}
+The implementation of the model is done in python, with use of the gurobi optimisation engine linear programming becomes a very simple method. Lines 2 and 3 are the decleration of variables relating to the variables found at equations \ref{MIP:M2S}, \ref{MIP:MCeil} corresponding to them exactly. From here the objective is declared and set to minimise , matching the objective \ref{MIP:OBJ} stated in the formulation section. The constraints are also similar with each constraint \ref{MIP:Link},\ref{MIP:SPcap},\ref{MIP:RemoveAll} all represented in code. For additional information on supporting code please refer to Appendix A. Once the formulation is complete gurobi will perform preprocessing on a matrix representation of the model, before using the modified simplex algorithm to solve the linear problem, while this algorithm could be written specifically for this thesis it was seen as unecissary as the gurobi optimisation engine is much more effcient at this task. 
+\\
+Once this optimisation algorithm has been completed the spoil is updated and the cost is returned, this is done by simply updating the relevant sections of the array and can be seen completed in the below code snippet.
+\begin{lstlisting}[language=python]
+self.cost = m.ObjVal
+self.potential_spoil = self.Spoil[:self.stemp]+[sum(M2S[n,s].x*\
+self.Dragline.get_BucketVol()*self.swell*self.expand for n in self.N)+self.Spoil[s]\
+ for s in self.S]+self.Spoil[self.etemp:]
+
+\end{lstlisting}
+This entire process is then wrapped into one fucntion so that the cost of a block can be calculated though one function call, vital to the application of this model in the optimisation of the entire strip. 
+\begin{lstlisting}[language=python]
+	def BlockCost(self,start,end,Spoil,output=0):
+		if end>len(self.Mine):
+			end = len(self.Mine)
+			# print("Adjusting End Position")
+		self.set_Spoil(Spoil)
+		if output ==1:
+			print("Spoil Set")
+		self.set_Block(start, end)
+		if output ==1:
+			print("Block Set:\t" ,[start,end])
+		self.Calc_Valid()
+		if output ==1:
+			print("Column Generation Done")
+		stime = time.time()
+		try:
+			self.MIP(output)
+			etime = time.time()-stime
+
+		except:
+			etime = time.time()-stime
+			print('\t MIP Infeasible')
+
+			return(np.inf,Spoil,etime)
+		if output ==1:
+			print("MIP Complete")
+		return (self.cost,self.potential_spoil,etime)
+		\end{lstlisting}
+The only unique or interesting part of this function is that if the block is not feasible then the function will return a cost of infinity, this will mean that the block will not be used in the optimal or feasible soluion of a sequence of blocks in a strip. Each call of the function take in the start, end and state of the spoil, allowing the block to be calculated to return the cost and updated spoil, as well as the time taken to calculate the MIP. Both cost and resulting spoil are vital to the calculation of the strip, and are the two desired outputs of any model describing the actions taken within a block. 
+\subsubsection{Results}
+\subsection{Mixed Integer Programming with Validity}
+This model is an updated version of the Mixed Integer model with only one added array of data and one additional constraing, however this single constraint makes a huge differences to the complexity and accuracy of the model. The constraint that a dragline cannot move to or reach every point in a block or in the spoil will constraint the areas where overburden can be distributed in the spoil section. This constraint was not intially obvious as typically the dragline will place spoil in local areas rather than in sections that would be out of its reach. However as the availability of spoil room is reduced the cost assocaiated with this action is seen as prefferable rather than an infeasible solution. This was only found after an implementation of the strip optimisation was complete, and as such can be seen as an updated model. 
+\subsubsection{Model Formulation}
+\paragraph*{Additional Data}
+
+\begin{align}
+\label{MIP:Data Valid}
+Z_{jk}  = \begin{cases} 1& \text{if movement from $n$ to $s$ is valid}\\
+0& \text{Otherwise}   \end{cases} 
+\quad \forall n \in N s\in S
+\end{align}
+This data is an $m\times s$ array of binary values, such that if the dragline is ableto feasibly reach the section of spoil when mining the section $m$ of overburden then the arrays value is 1 and 0 otherwise. This array is currently based on the feasible  maximum and minimum reach of the dragline, however other factors such as the pit edge while starting a new block, or having to move over sections in the spoil may cause this array to become more complex. Updating and improving this data should be of high importance for an accurate model, however as it is not integral to how the algorithm works, some simplifications can be made.
+\paragraph*{Additional Constraints}
+\begin{align}
+\label{MIP:Valid}
+Y_{n,s}\leq \infty\times Z_{n,s} \qquad \forall n \in N , s\in S
+\end{align}
+This constraint is a big M constraint, that is it will limit the value of Y unless the value of Z is one for that combination of m and s. This constraint is simply implemented and constrinct the feasible solutions of the model, it should be noted that this is setting most of the potential values of Y and X before any optimisation is considred, doing this has a dramatic effect on the reduction of runtime. As less options are available, less calculations mustbe considered and as such the program can run faster.
+\subsubsection{Implementation}
+The code for this section is the exact same as previously, however one additional constraint is added, as can be seen below it is very simple to add additional contstraints into the gurobi model.
+\begin{lstlisting}[language=python]
+
+OnlyifValid = {
+		(n,s):m.addConstr(Y[n,s]<= np.inf*self.isValid[n-self.start,s-self.start-self.Dragline.get_reach()]) for n in self.N for s in self.S
+		}
+\end{lstlisting}
+However more interestingly is the calculation of valid blocks, as mentioned previously, the simplistic model for a valid block is if it is within the reach of the dragline, while this is not an accurate model it is suffcient for the demonstration of the block planning algorithm and with more time could be developed to be more fitting for application. 
+\begin{lstlisting}[language = python]
+def Calc_Valid(self):
+	self.isValid = np.zeros((self.end-self.start+1,self.end-self.start+2*self.Dragline.get_reach()+1))
+	for i in range(self.end-self.start):
+		for j in range(i-self.Dragline.get_reach(),i+self.Dragline.get_reach()):
+			self.isValid[i,j+self.Dragline.get_reach()] = 1
+\end{lstlisting}
+Here the array size is set up, we only consider areas within the block and spoil and as such this will reduce the size of the array and allow for more rapid calculation of results. Once this is done for every possible combination of blocks in this window a check is done to ensure that it is a valid movement. 
+\subsubsection{Results}
+
+
+\subsection{Dynammic Programming}
+\subsubsection{Model Formulation}
+\paragraph*{States}
+\begin{align}
+\label{DP:state1}
+H \quad \text{Overburden remaining at current block}\\
+\label{state2}
+S \quad \text{State of spoil at current time}
+\end{align}
+\paragraph*{Stages}
+\begin{align}
+\label{DP:Stage1}
+M \quad \text{current mine section }m \\ 
+\label{DP:stage2}
+D \quad \text{Position Of Dragline}
+\end{align}
+\paragraph*{Contribution Function}
+\begin{align}
+\label{key}
+\end{align}
+\paragraph*{Transistion Function}
+\paragraph*{Value Function}
+\subsubsection{Implementation}
+\begin{lstlisting}[language=python]
+_Bucket ={}
+M = MineGen(100)
+S = [0 for i in range(130)]
+
+def Bucket(Cur,End,SP,M,Scoops,H,D-):
+    global _Bucket
+    SPtup = str(SP)
+    SPmax = 150
+    Reach = range(D-20,D+20) 
+    if D < 20:
+        Reach=range(0,D+20) 
+    if D-Cur<=5:
+        D = D+5
+    if H <=0:
+        Cur = Cur+1
+        Scoops = 0
+        H = M[Cur]
+    if Cur == End:
+        return (0,0,0,0,[],0)
+    if (Cur,End,Scoops,SPtup) not in _Bucket:
+        _Bucket[Cur,End,Scoops,SPtup] = min((costspoilNL(Cur,A,H,D)+
+            Bucket(Cur,End,SP[:A]+[SP[A]+28]+SP[A+1:],M,Scoops+1,H-10,D)[0],Cur\
+                  ,A,Scoops,SP[:A]+[SP[A]+28]+SP[A+1:],D)for A in Reach if\
+    SP[A]+28 <= SPmax)
+    return _Bucket[Cur,End,Scoops,SPtup]
+
+def GetData(Start,End,Mine,Spoil):
+    try:
+        A = Bucket(Start,End,Spoil,Mine,0,Mine[0],Start+20)
+        Cost = A[0]        
+        print("New Spoil Aquired")
+        Flag = True
+        NewSpoil = _Bucket[max(_Bucket.keys())][4]
+        Position = A[5]
+        print("Cost Of Block:",A[0])
+    except:
+        print("Failed")
+        Flag = False
+        Cost = 100000000000000
+        NewSpoil = Spoil
+        Position = 0
+    return(Cost,NewSpoil,Flag,Position)
+
+\end{lstlisting}
+\subsubsection{Results}
+
+
+
+% \subsection{Resource Constrained Dynammic Programming}
+% \subsubsection{Model Formulation}
+% \paragraph*{Additional states}
+% \paragraph*{Saturation of inputs}
+% \subsubsection{Implementation}
+% \subsubsection{Results}
+
+\subsection{Comparison of Techniques}
+
+\section{Optimisation of the Strip}
+\subsection{Mixed Integer Programming}
+\subsection{Mixed Integer Programming with Sequence Generation}
+\subsection{Dynamic Programming}
+\subsection{Resource Constrainted Dynamic Programming}
+\subsection{Resource Constrainted Dynamic Programming with Sequence Generation}
+\subsection{Comparison of Techniques}
+
+
+

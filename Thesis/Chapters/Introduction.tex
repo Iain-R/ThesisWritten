@@ -1,0 +1,65 @@
+%!TEX root = ../main.tex
+% state the general topic and give some background
+% provide a review of the literature related to the topic
+% define the terms and scope of the topic
+% outline the current situation
+% evaluate the current situation (advantages/ disadvantages) and identify the gap
+% identify the importance of the proposed research
+% state the research problem/ questions
+% state the research aims and/or research objectives
+% state the hypotheses
+% outline the order of information in the thesis
+% outline the methodology
+
+
+
+
+
+% lets not go straight in with FPGA
+% 
+% \section{Topic}
+% The topic of this thesis is the mathematical modelling and optimisation of projected dragline mining by modelling the terrain of the strip as a density function. The projected planning of the dragline will aim to make use of minor simplifications or novel ways of modelling in order to create an efficient method for dragline excavation. This thesis does not explicitly intend to work with the software of others, however as explained in 1.1 a major point of this project is the ability to utilise the results of the thesis in other areas.
+Draglines are massive machines used in open cut mining, often having boomlengths of up to 100m these massive machines will move through a mine in a series of strips. Each strip in a mine can be broken down into fundamenatal blocks which have an internal movement pattern, depending on the machine the allowable sizes of these blocks will vary, as will the internal patterns. The purpose of this thesis is to develop a method of calculating block lengths for each strip in a mine such that if the time taken varies with the length of the block, then the minimal time spent per strip is found. However this method is not only useful for the calculation of an optimal path, the planning of blocks in a mine is an untapped topic of research, while products such as MineMax and polymathian exist for pit mines and underground mines, no software packages exist for the planning and optimisation of a strip mine with regards to overburden removal with draglines. (http://www.carlsonsw.com/solutions/mining-solutions/surface-mining/) While packages like Carlson mining solutions does deliver a strip miningm modeller it does not generate the block dimensions within a strip, nor how these should or could be planned. \\
+As No methods exist in the space therefore the topic of strip generation in mining is valid for the exploration of throughout this thesis, while here only one strip is considered at a time the block dimension calculations are independant from strip to strip and as such will be able to be calculated as the mine is further explored. 
+
+
+\section{Problem Definition}
+% The problem at hand can be defined as the optimisation for the block sizing for draglines in a single strip. A one dimensional approach was taken for simplification of modelling and faster calculation time. The mine is modelled as a density function of the overburden to be removed and the remaining space within the spoil. Therefore a cost of block lengthn with regards to time must be found such that the overall cost of the strip can be found and optimised for. While no dragline is specified many are considered in this paper as a way to compare to results given from other papers. 
+% \\
+% More formally the problem can be defined as an optimisation problem to minimize time taken to mine an open cut strip using a dragline. This is acheived by varyin ghte length of the blocks within the strip such that the cost for each individual block is also minimized, for these reasons it is feasible to also model this as two intertwined optimisation problems. 
+% % introduce research problem.
+The aim of this thesis is the optimisation of dragline block lengths throughout a strip, where a block is the region of movement for a fixed movement pattern. While movement patterns that vary could be considered they are not within the scope of this project. The problem therefore can be defined as the calculation of feasible and optimal sequences of blocks within a strip. As no algorithmic methods exist for such a task the comparison and validation of results will be compared to examples from current pracetices in mining. Simply put the thesis is the minimization of time taken to remove overburden from a strip using a dragline. 
+
+
+
+\section{Motivation}
+The optimisation of strip mining within Australia has been the focus of many academic groups over decades of research \cite{DraglineDecade}. The reasoning for this is based firmly in economics. The majority of Australia's exports are derived from mining, with iron ores accounting for 20.2\% of Australian exports in 2014\cite{ExportStats} and coal accounting for an additional 11.6\% in the same year\cite{ExportStats}. These two industries alone accounted for \$104 007 million of national exports, \cite{ExportStats} which is a combined total of 32.8\% of the nations exports at the time. Therefore the core motivation for this project is to increase the efficiency of a dragline, as doing such will be financially beneficial,  it can be found that saving the industry 1\% of time will save \$35 million \cite{PacificCoal}.
+
+Draglines are massive machines used in strip mining to remove overburden, allowing target minerals to be exposed and extracted\cite{IntoOpenPit}. Automating and optimising these procedures will lead to massive reductions in cost and time \cite{AutoEarthmoving}. The optimisation and automation of draglines has been a growing field. Initially the application of automation in draglines was seen as a challenging task, as the machinery must operate in harsh, complex three dimensional systems. \cite{IntroRobo}. In response to this challenge groups such as the 22 year old \cite{DraglineDecade} group, Shared Autonomy for Improving Mining Equipment Productivity, were formed to improve the autonomy and functionality of draglines.
+
+The first attempts at automation were made in the 1980s \cite{CreativeEngineering}, the approach taken was to record the actions taken by an operator and then replay these actions in a loop. However this project was unsuccessful as the operator bases its movements on an instantaneous state\cite{CreativeEngineering} rather than just a goal state. This attempt at innovation however was not in vain as other faculties began investigating methods of automation in dragline mining.
+
+In 1993, driven by previous work a model derived from vision-based robotic control \cite{VisionRobot}, was successfully implemented on a scaled model of a dragline. However, the methods of sensing and control initially provided difficulty in the application of this model to full scale machines \cite{DraglineDecade}. During this it was found that in a single cycle a dragline,  would spend 80\% of the cycle swinging in free space. \cite{DraglineDecade} This became the focus for many groups as it was seen as a potential area to reduce cycle time. The automation of a dragline and its components is a still developing field\cite{AutoEarthmoving}, however is not the main focus of this study. As the automation of draglines began to reduce the variance in operator it became apparent that other methods could be applied to optimise the motion and paths taken of the dragline.\cite{OperatorPerformance}. This research into path planning and modelling is a field that was and is still applied today. Topics such as motion planning, active control and path planning have all been applied to further improve performance in mining.\cite{DraglineDecade} In the year 2002 a two week test on a Bucyrus-Erie 1350 system showed that the machine was able to match or exceed the performance of an operator, a reduction in swing time was made and the system ran consistently at all points. \cite{DraglineDecade} This marked  an important step in the improvement of efficiency in draglines as it meant that additional modelling and path planning, as well as optimisation regarding movements could be considered with little to no operator variance\cite{IntroRobo}.
+
+The motivation of this thesis is then in part based on the work of others in the automation of draglines, as it will allow former methods to be applied, and has allowed for more specific optimisations to be undertaken.In particular the optimisation of the movements of a dragline is a major task attempted to boost the efficiency of a mining system. Current models use a variety of methods, however the one that is of interest to this thesis is the use of mixed integer linear programming\cite{ORPlanning} in order to optimise the motions of a dragline. However with this application, as with other applications the run time of the simulation does not scale well. Therefore the motivation of this thesis is to determine an efficient technique that is capable of calculating the optimal lengths of blocks in a mining strip. These lengths can then be used in the previously stated models to increase runtime efficiency by reducing the amount of calculations required. 
+
+In conclusion the motivation for this thesis is multi layered, at its core the main motivation is the financial benefit of optimisation in the utilisation of draglines, however many other researchers have been working on this task for decades, and as such any individual method is not feasible. Therefore this thesis seeks to help improve the runtime efficiency of current models by supplying a time efficient alternative in determining the optimal solutions for block size in conventional drag lines. 
+
+\section{Scope}
+
+% \section{Assumptions}
+% \section{Applications}
+
+% \section{Research Goals}
+
+\section{Thesis Structure}
+\begin{description}
+    \item[Introduction] Introduces the motivation and goals of the thesis while also properly defining the problem , variables and notation used throughout the thesis.
+    \item[Background] A foccused review of neccisarry information and background knowledge that is referenced and used throughout the thesis in the development of the algorithm, as well as methods and information that was considered throughout. 
+    \item[Literature Review] A review of prior art and techniques that can be compared to the methods outlined in this thesis.
+    \item[Design and Methodology] A systems level description of the design of the algorithm, including the assumptions and considerations made for each design choice.
+    \item[Implementation] A detailed description of the implementation of each section, including discarded methods and results of the sections.
+    \item[Results] Results of testing the software against prior art as well as results generated for the final strip mine,.
+    \item[Discussion] A justification of assumptions and decisions made as well as a final comparrison to other methods mentioned 
+    \item[Conclusion] A summary of the thesis with a focus on the future of the project. 
+\end{description}

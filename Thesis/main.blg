@@ -1,0 +1,25 @@
+This is BibTeX, Version 0.99dThe top-level auxiliary file: main.aux
+The style file: IEEEtranN.bst
+I couldn't open database file References.bib.bib
+---line 172 of file main.aux
+ : \bibdata{IEEEabrv,References.bib
+ :                                 }
+I'm skipping whatever remains of this command
+Database file #1: IEEEabrv.bib
+Warning--I didn't find a database entry for "DraglineDecade"
+Warning--I didn't find a database entry for "ExportStats"
+Warning--I didn't find a database entry for "PacificCoal"
+Warning--I didn't find a database entry for "IntoOpenPit"
+Warning--I didn't find a database entry for "AutoEarthmoving"
+Warning--I didn't find a database entry for "IntroRobo"
+Warning--I didn't find a database entry for "CreativeEngineering"
+Warning--I didn't find a database entry for "VisionRobot"
+Warning--I didn't find a database entry for "OperatorPerformance"
+Warning--I didn't find a database entry for "ORPlanning"
+-- IEEEtranN.bst version 1.13 (2008/09/30) by Michael Shell.
+-- http://www.michaelshell.org/tex/ieeetran/bibtex/
+-- See the "IEEEtran_bst_HOWTO.pdf" manual for usage information.
+** Natbib version - not for normal IEEE work.
+
+Done.
+(There was 1 error message)
