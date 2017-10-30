@@ -14,6 +14,7 @@ The capacity of a section of spoil is a vital constraint in the formulation of a
 \subsubsection{Spoil Expansion Factor}
 \subsection{Movement through a Block}
 
+	
 \subsection{Dragline Dynamics}
 
 \subsection{Action Cost}
@@ -29,7 +30,7 @@ Mixed Integer Programming is a somewhat obvious choice for this model, as this t
 \label{MIP:Set:S}
 S\qquad \text{Set of all Spoil Sections   } s\in S\\
 \label{MIP:Set:N}
-N\qquad \text{Set of all Mine Sections } m \in M
+N\qquad \text{Set  of all Mine Sections } m \in M
 \end{align}
 Here the sets are used to represent the discretised mine and spoil sections, while these sets have no effect on the system they are used for ommunication of data and variables. The sizes of sets $S$ and $M$ must be the same as the spoil channel is the results of a prior strip in a mine. The discretisation of the Mine into sections was chosen as the move from a continues model to a discrete model made the modelling of the problem much easier. While some information is lost in this process it is negligible as survey data itself is discrete. The size of the sections themselves are dependant on both survey data and desired accuracy, for the testing of this thesis each section was a metre in length, however if more precision is required then the resoltion could be increased. However the increase in detail and resolution will result in slower calculations of block dimensions as more potential solutions are presented. One metre was selected because it was the resolution of the real world data supplied however as seen in the comparison of results a lower resolution will dramatically speed up the run time of the problem, this could be used in first pass solutions to get an approximation of good results. 
 \paragraph*{Data}
@@ -186,23 +187,25 @@ Here the array size is set up, we only consider areas within the block and spoil
 \subsubsection{Model Formulation}
 \paragraph*{States}
 \begin{align}
-\label{DP:state1}
-H \quad \text{Overburden remaining at current block}\\
-\label{state2}
-S \quad \text{State of spoil at current time}
+\label{state1}
+S \quad \text{State of spoil at current stage}
 \end{align}
+The state of a formulation is the current resources of remaining in a resource constrained dynammic program. Here this is the spoil channel, which will change with every action and therefore is updated at every stage, this state alongside the current stage should be stored in the memory so that the process of memotisation can occur. This technique uses the princeple of optimality to reduce the amount of calcualtions required, that is if we have already calculated the optimal path for the block from this stage with the current states then the solution is already known and that branch of exploration can be completed. However the only state in this formulation is the amount of spoil in each section at the current stage, the use of this state is vital as it is used for the constraint on the actions available at each point. The spoil is a state as it will change with each action, nothing else will change depending on the action taken and therefore all other dynammic variables are simply stages. 
 \paragraph*{Stages}
 \begin{align}
+\label{DP:Stage0}
+H \quad \text{Overburden remaining at current block}\\
 \label{DP:Stage1}
 M \quad \text{current mine section }m \\ 
 \label{DP:stage2}
 D \quad \text{Position Of Dragline}
 \end{align}
-\paragraph*{Contribution Function}
-\begin{align}
-\label{key}
-\end{align}
+The stages of the model are something that we do not have control over, each action moves us from one stage to the next. This formulations two stages are interlinked, however it could also be seen that the position of the dragline is dependant on the current mine section. Therefore the model has effectivly two stages, the overburden left at the current section and the current section within the mine. Once all overburden is removed from the stage $H$ the position $M$ is updated. If the position is suffciently updated then the draglines position also will update. For any given block these stages will occur in the same order no matter what. This is the differentiation between states and stages, the dragline will always move through the block and remove all overburden however the actions taken to remove the overburden will not always be the same. Here the states are selected as the minimum required representation of the block in order to properly model its behaviors and movement process. 	
 \paragraph*{Transistion Function}
+\begin{align}
+\label{Transition}
+1+1=2
+\end{align}
 \paragraph*{Value Function}
 \subsubsection{Implementation}
 \begin{lstlisting}[language=python]
