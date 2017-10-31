@@ -1,7 +1,7 @@
 This is BibTeX, Version 0.99dThe top-level auxiliary file: main.aux
 The style file: IEEEtranN.bst
 I couldn't open database file References.bib.bib
----line 176 of file main.aux
+---line 172 of file main.aux
  : \bibdata{IEEEabrv,References.bib
  :                                 }
 I'm skipping whatever remains of this command

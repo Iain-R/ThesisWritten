@@ -144,7 +144,14 @@ This entire process is then wrapped into one function so that the cost of a bloc
 		return (self.cost,self.potential_spoil,etime)
 		\end{lstlisting}
 The only unique or interesting part of this function is that if the block is not feasible then the function will return a cost of infinity, this will mean that the block will not be used in the optimal or feasible soluion of a sequence of blocks in a strip. Each call of the function take in the start, end and state of the spoil, allowing the block to be calculated to return the cost and updated spoil, as well as the time taken to calculate the MIP. Both cost and resulting spoil are vital to the calculation of the strip, and are the two desired outputs of any model describing the actions taken within a block. 
-% \subsubsection{Results}
+\subsubsection{Results}
+\begin{figure}[h]
+\caption{Block cost comparison on an empty spoil}
+\label{MIP1}
+\includegraphics[width=\textwidth]{MILP1.png}
+\end{figure}
+The above figure \ref{MIP1} shows that the block is peicewise linear when calculated on an open spoil, that is the blocks cost can be represented as a series of linear functions which may appropriatly approximate the block, this interestingly could be used as a potential alternative to the solution of a 
+
 \subsection{Mixed Integer Programming with Validity}
 This model is an updated version of the Mixed Integer model with only one added array of data and one additional constraint, however this single constraint makes a huge differences to the complexity and accuracy of the model. The constraint that a dragline cannot move to or reach every point in a block or in the spoil will constraint the areas where overburden can be distributed in the spoil section. This constraint was not initially obvious as typically the dragline will place spoil in local areas rather than in sections that would be out of its reach. However as the availability of spoil room is reduced the cost associated with this action is seen as preferable rather than an infeasible solution. This was only found after an implementation of the strip optimisation was complete, and as such can be seen as an updated model. 
 \subsubsection{Model Formulation}
@@ -180,8 +187,13 @@ def Calc_Valid(self):
 			self.isValid[i,j+self.Dragline.get_reach()] = 1
 \end{lstlisting}
 Here the array size is set up, we only consider areas within the block and spoil and as such this will reduce the size of the array and allow for more rapid calculation of results. Once this is done for every possible combination of blocks in this window a check is done to ensure that it is a valid movement. 
-% \subsubsection{Results}
-
+\subsubsection{Results}
+\subsubsection{Results}
+\begin{figure}[h]
+\caption{Block cost comparison on an empty spoil}
+\label{MIP2}
+\includegraphics[width=\textwidth]{MILP2.png}
+\end{figure}
 
 \subsection{Dynammic Programming}
 \subsubsection{Model Formulation}
@@ -262,8 +274,13 @@ def GetData(Start,End,Mine,Spoil):
 
 \end{lstlisting}
 However in the memeotisation it is vital to include the state of the spoil, unfortunately this is likely to be unique and as such will not occur very often, this reduces the amount of memory calls made and the runtime of the program will increase, however if the state is not in the memory then the optimal solution of the problem has no guarantee to be returned, and instead a feasible solution will be supplied. 
-% \subsubsection{Results}
-
+\subsubsection{Results}
+\subsubsection{Results}
+\begin{figure}[h]
+\caption{Block cost comparison on an empty spoil}
+\label{DP1}
+\includegraphics[width=\textwidth]{MILP1.png}
+\end{figure}
 
 
 \subsection{Comparison of Techniques}
