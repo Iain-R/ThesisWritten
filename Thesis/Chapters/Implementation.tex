@@ -9,15 +9,15 @@ The models discussed here are broken into four major sections, proper modelling 
 \subsection{Spoil modelling}
 The Spoil or overburden is the strictest constraint on the feasblitly of a strip, as such the modelling of spoil distrobution is vital to the accuracy of a model. The spoil channel can be discretised into sections with a given maximum capacity per section, following this the swell rate of the spoil and expansion factor due to ineffcient spoil placement should also be considered. These three models are the required knowledge to properly consider and implement spoil capacity constraints on a formulation, each model can be seen below. 
 \subsubsection{Spoil Capacity}
-The capacity of a section of spoil is a vital constraint in the formulation of a block model
+The capacity of a section of spoil is a vital constraint in the formulation of a block model, the capacity of the spoil is therefore modelled as the maximum amount of spoil that could stabily be held at that section without collapse of the spoil channel, the stable angle for loose overbruden to be stacked is 36 degree, with the spoil channel 20m lower than that of the mine therefore by usein an approximate model of a cone to represent each spoil section, then the spoil capacity is $0.33\times W^2/2 \times H $ is the maximum spoil capacity. 
 \subsubsection{Swell Factor}
-\subsubsection{Spoil Expansion Factor}
-\subsection{Movement through a Block}
+Swell factor is the amount attributed to the swelling of overburden as it decompresses from its compacted premine state, this is found in textbooks and for a typical soil type of compact dirt can be modelled as an increase in volume of 30\%. The modelling taken from prior resources such as textbooks is suffcient for the purposes of this thesis 
+% \subsection{Movement through a Block}
 
 	
-\subsection{Dragline Dynamics}
+% \subsection{Dragline Dynamics}
 
-\subsection{Action Cost}
+% \subsection{Action Cost}
 
 \section{Optimisation at the Block Level}
 In order to model a sequence of blocks it is vital to first develop an accurate model describing the cost and spoil of a block, several methods were considered, each of which was an optimisation problem seeking to minimise the time taken to process the block. The calculation and modelling of a block must be rapid, as this modelling function will be used thousands of times in the calculation of a strip, while storing block costs into memory was originally considered the feasability and cost of a block varies with three inputs, its start and end locations, and the curent state of the spoil. Therefore the amount of unique blocks that can be considered is huge and storing results in memory loses effciency. \\A variety of methods were formulated and the results were compared against one another for both run time and accuracy, in order to verify the accuracy of a model its output is compared to techniques that are outlined in sections \ref{PA:MIP}, \ref{PA:DP} and \ref{PA:GA}. This comparison was done on both real world data and standard data sets that were generated for the purpose of testing. The comparison will focus on the run times of each solution as well as the accuracy of the method proposed. 
@@ -144,7 +144,7 @@ This entire process is then wrapped into one fucntion so that the cost of a bloc
 		return (self.cost,self.potential_spoil,etime)
 		\end{lstlisting}
 The only unique or interesting part of this function is that if the block is not feasible then the function will return a cost of infinity, this will mean that the block will not be used in the optimal or feasible soluion of a sequence of blocks in a strip. Each call of the function take in the start, end and state of the spoil, allowing the block to be calculated to return the cost and updated spoil, as well as the time taken to calculate the MIP. Both cost and resulting spoil are vital to the calculation of the strip, and are the two desired outputs of any model describing the actions taken within a block. 
-\subsubsection{Results}
+% \subsubsection{Results}
 \subsection{Mixed Integer Programming with Validity}
 This model is an updated version of the Mixed Integer model with only one added array of data and one additional constraing, however this single constraint makes a huge differences to the complexity and accuracy of the model. The constraint that a dragline cannot move to or reach every point in a block or in the spoil will constraint the areas where overburden can be distributed in the spoil section. This constraint was not intially obvious as typically the dragline will place spoil in local areas rather than in sections that would be out of its reach. However as the availability of spoil room is reduced the cost assocaiated with this action is seen as prefferable rather than an infeasible solution. This was only found after an implementation of the strip optimisation was complete, and as such can be seen as an updated model. 
 \subsubsection{Model Formulation}
@@ -180,11 +180,10 @@ def Calc_Valid(self):
 			self.isValid[i,j+self.Dragline.get_reach()] = 1
 \end{lstlisting}
 Here the array size is set up, we only consider areas within the block and spoil and as such this will reduce the size of the array and allow for more rapid calculation of results. Once this is done for every possible combination of blocks in this window a check is done to ensure that it is a valid movement. 
-\subsubsection{Results}
+% \subsubsection{Results}
 
 
 \subsection{Dynammic Programming}
-Dynammic programming is another potent
 \subsubsection{Model Formulation}
 \paragraph*{States}
 \begin{align}
@@ -216,6 +215,7 @@ V_t(S_t) = \min (C_A+V_t(S_{t+A}))
 \end{align}
 The value function calculates the cost associated with agiven action based on the cost of the action and the resulting states for all future stages, the cost of an action is simply the swingtime from the current block to the spoil selected as an action. This cost is to be minimised however will also affect the state of the next action, as such this will recursivley consider all potential courses of action for each action taken. Therefore teh more actions that can be made the more computation time is required to calculate the cost of a block. 
 \subsubsection{Implementation}
+The algorithm mentioned is performed recursivley, at each iteration the position of the dragline and current block are updated, as they are stages they are very simple to update. Then the memory is checked to see if a solution already exists for this point. The process taken is simply outlined by the formulation above, but with minor changes to input saturation to take into account any limits on the system.
 \begin{lstlisting}[language=python]
 _Bucket ={}
 M = MineGen(100)
@@ -261,26 +261,126 @@ def GetData(Start,End,Mine,Spoil):
     return(Cost,NewSpoil,Flag,Position)
 
 \end{lstlisting}
-\subsubsection{Results}
-
-
-
-% \subsection{Resource Constrained Dynammic Programming}
-% \subsubsection{Model Formulation}
-% \paragraph*{Additional states}
-% \paragraph*{Saturation of inputs}
-% \subsubsection{Implementation}
+However in the memeotisation it is vital to include the state of the spoil, unfortunatly this is likely to be unique and as such will not occur very often, this reduces the amount of memory calls made and the runtime of the program will increase, however if the state is not in the memory then the optimal solution of the problem has no garuntee to be returned, and instead a feasible solution will be supplied. 
 % \subsubsection{Results}
+
+
 
 \subsection{Comparison of Techniques}
 
 \section{Optimisation of the Strip}
-\subsection{Mixed Integer Programming}
-\subsection{Mixed Integer Programming with Sequence Generation}
-\subsection{Dynamic Programming}
+% \subsection{Mixed Integer Programming}
+% \subsection{Mixed Integer Programming with Sequence Generation}
+% \subsection{Dynamic Programming}
 \subsection{Resource Constrainted Dynamic Programming}
+Resource constrained dynammic prgramming is the intially obvious solution to the problem, as the mine is explored blocks in a valid range are considered and the current position is updated. The amount of blocks required is not known in avance and therefore a resource constrained dynammic program will find all feasible solutions to this problem alongside the optimal solution. 
+\subsubsection{Model Formulation}
+\paragraph*{States}
+\begin{align}
+\label{Stte}
+S \quad \text{State of spoil at current stage}
+\end{align}
+Similarly to the formulation of the cost of a block the spoil capcity at any point is the resource constraining the solution, this is fed into the block cost algorithm in order to propoerly obtain the optimal solution to the problem, as the spoil is updated creating blocks will become more dfficult. 
+\paragraph*{Stages}
+\begin{align}
+\label{DP:Stage0}
+M \quad \text{current mine section }m 
+\end{align}
+The stages of the model are something that we do not have control over, each action moves us from one stage to the next. This formulation is the current location of the start of the next block in the model, we consider this as a way of fnding our end condition , howevever the stage is dependant on the actions takien prior, a longer block will result in a stage further on in the mine than usual. The use ofa location as a state is vital to the understanding of the formulation. 
+\paragraph*{Transistion Function}
+\begin{align}
+\label{Transition}
+S_{stage+1}(s)=S_{stage+1}(s)\times SEf  \text{where $s$ is the spoil section in action }
+\end{align}
+The transition value allows the next state to be calculated based on the current state and the action chosen. Here the action chosen is the movment of overburden from the current block to some point on the spoil $s$, this action will succeed in adding additonal overburden to the relevant section on the spoil, updating this is simple and from here the only additional peice of information required is the constraint that this tranistion fucntion cannot create a state that exceeds the spoil capacity, this is done by simply checking the suggested next state and adding a large cost if this constraint is violated. 
+\paragraph*{Value Function}
+\begin{align}
+\label{value}
+C_A = \text{Cost of block length A}\\
+V_t(S_t) = \min (C_A+V_t(S_{t+A}))
+\end{align}
+The value function calculates the cost associated with agiven action based on the cost of the action and the resulting states for all future stages, the cost of an action is simply the swingtime from the current block to the spoil selected as an action. This cost is to be minimised however will also affect the state of the next action, as such this will recursivley consider all potential courses of action for each action taken. Therefore teh more actions that can be made the more computation time is required to calculate the cost of a block. 
+\subsubsection{Implementation}
+\begin{lstlisting}[language = python]
+	def DP(self,position,end,spoil):
+		self.count +=1
+		print("Resource Constrained Dynamic Program \t Called:\t",self.count,'  times')
+		print("Distance Remainging  :\t" ,end-position)
+		if position>end-self.Dragline.get_minBlock():
+			position = end
+			# print("FUCK")
+			return (10000000000000000000000000,0,[])
+
+		if position == end:
+			# print(value, sep, end, file, flush)
+			return (0,0,[])
+		# if end <= position:
+			# self.dict[position,end,str(spoil)] = 100000000
+			# return self.dict[position,end,str(spoil)]
+		if (position,end,str(spoil)) not in self.dict:
+			self.dict[position,end,str(spoil)] = min((10000+self.Blk.BlockCost(position,position+Action,spoil)[0]+
+				self.DP(position+Action,end,self.Blk.BlockCost(position,position+Action,spoil)[1])[0]
+				,Action,self.Blk.BlockCost(position,position+Action,spoil)[1])
+			for Action in range(self.Dragline.get_minBlock(),self.Dragline.get_maxBlock()))
+		return self.dict[position,end,str(spoil)]
+
+\end{lstlisting}
 \subsection{Resource Constrainted Dynamic Programming with Sequence Generation}
+The strongest constraint in the formulation of the strip is that the sum of all blocks must be equal to the length of the strip, that is $\sum B = L_s$, however in the prior formulation this constraint is not considered, this constraint is applied by generating all sequences of potential blocks that will equal the length of the mine. This set of potential solutions is much less than the potential solutions without this constraint and therefore the application of such a constraint will reduce the exploration of the dynammic program, sequence generation is done recursivly as seen in the below code snippit. 
+\begin{lstlisting}[language = python]
+def GenBranchs(self,current,end,min,max,past):
+	# count = count+1
+	# print(count)
+		if current == end :
+			past+''
+			self.Prunedstr.append(past)
+			past = ''
+			return 1
+		if current>end:
+			past = ''
+			return -1
+		for i in range(min,max):
+			pred = past + ','+str(i)
+			self.GenBranchs(current+i, end, min, max,pred)
+		return 0
+\end{lstlisting}
+Once this is complete the potential solutions are a set of unique solutions to the problem, from here each potential solution is considered by usinga forward dynammic program as formulated in the prior section, this modified method is seen below. 
+\begin{lstlisting}[language = python]
+def PrunedCost(self):
+		self.best = np.inf
+		self.bestStr = []
+		counter = 0
+		Flagg = 0
+		for solution in tqdm(self.Prunelst):
+			# counter+=1
+			# print('Percent Complete:\t',counter/len(self.Prunelst)*100,'%')
+			for Block in range(len(solution)):
+				position = sum([solution[i] for i in range(Block)])
+				# print(position,Block,solution)
+				combo = ''
+				if Block > 0:
+					combo = str([solution[i] for i in range(Block)])
+				if combo in self.prunedict:
+					oldspoil = self.prunedict[combo][1]
+					blockcalc = self.Blk.BlockCost(position,position+solution[Block],oldspoil)
+					cost = self.prunedict[combo][0]+blockcalc[0]+10000
+					# if cost > self.best:
+						# Flagg = 1
+						# break
+				else:
+					oldspoil = self.Spoil
+					blockcalc = self.Blk.BlockCost(position,position+solution[Block],oldspoil)
+					cost = blockcalc[0]+10000
+					# if cost > self.best:
+						# Flagg = 1
+						# break
+				newcombo = str([solution[i] for i in range(Block)])
+				self.prunedict[newcombo] = [cost,blockcalc[1]]
+			self.Prunefinal[str(solution)] = self.prunedict[str([solution[i] for i in range(Block)])]
+
+\end{lstlisting}
 \subsection{Comparison of Techniques}
+
 
 
 
