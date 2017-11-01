@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2015.6.1)  31 OCT 2017 15:43
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2015.6.1)  1 NOV 2017 04:16
 entering extended mode
 **C:/Users/Rudge-Top/Documents/Thesis_Written/ThesisWritten/Thesis/main.tex
 (C:/Users/Rudge-Top/Documents/Thesis_Written/ThesisWritten/Thesis/main.tex
@@ -909,7 +909,7 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 ) [8
 
 ] [9]
-Overfull \hbox (4.6378pt too wide) in paragraph at lines 64--64
+Overfull \hbox (4.6378pt too wide) in paragraph at lines 73--73
  [][] []\OT1/cmr/m/n/12 Resource Con-strainted Dy-namic Pro-gram-ming with Se-q
 uence 
  []
@@ -1031,15 +1031,15 @@ Package natbib Warning: Citation `ORPlanning' on page 4 undefined on input line
 Chapter 2.
 
 (C:\Users\Rudge-Top\Documents\Thesis_Written\ThesisWritten\Thesis\Chapters/Back
-ground.tex) [7
+ground.tex [7
 
-]
+] [8] [9]) [10]
 Chapter 3.
 
 (C:\Users\Rudge-Top\Documents\Thesis_Written\ThesisWritten\Thesis\Chapters/Lite
-rature_Review.tex [8
+rature_Review.tex [11
 
-]) [9] [10]
+]) [12] [13]
 Chapter 4.
 
 (C:\Users\Rudge-Top\Documents\Thesis_Written\ThesisWritten\Thesis\Chapters/Desi
@@ -1048,34 +1048,34 @@ Underfull \hbox (badness 10000) in paragraph at lines 4--8
 
  []
 
-[11
+[14
 
 ]
 Underfull \hbox (badness 10000) in paragraph at lines 13--14
 
  []
 
-[12] [13] [14]) [15]
+[15] [16] [17]) [18]
 Chapter 5.
 
 (C:\Users\Rudge-Top\Documents\Thesis_Written\ThesisWritten\Thesis\Chapters/Impl
-ementation.tex [16
+ementation.tex [19
 
 ]
 
-LaTeX Warning: Reference `PA:MIP' on page 17 undefined on input line 23.
+LaTeX Warning: Reference `PA:MIP' on page 20 undefined on input line 23.
 
 
-LaTeX Warning: Reference `PA:DP' on page 17 undefined on input line 23.
+LaTeX Warning: Reference `PA:DP' on page 20 undefined on input line 23.
 
 
-LaTeX Warning: Reference `PA:GA' on page 17 undefined on input line 23.
+LaTeX Warning: Reference `PA:GA' on page 20 undefined on input line 23.
 
-[17]
+[20]
 
-LaTeX Warning: Reference `PA:MIP' on page 18 undefined on input line 26.
+LaTeX Warning: Reference `PA:MIP' on page 21 undefined on input line 26.
 
-[18] [19] [20] [21] [22]
+[21] [22] [23] [24] [25]
 ("C:\Program Files\MiKTeX 2.9\tex\latex\listings\lstlang1.sty"
 File: lstlang1.sty 2013/08/26 1.5b listings language file
 )
@@ -1093,22 +1093,22 @@ File: omlcmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OML/cmr/m/n' in size <10> not available
 (Font)              Font shape `OML/cmm/m/it' tried instead on input line 94.
- [23] [24] [25]
-<Images/MILP1.png, id=134, 578.16pt x 431.4519pt>
+ [26] [27] [28]
+<Images/MILP1.png, id=143, 578.16pt x 431.4519pt>
 File: Images/MILP1.png Graphic file (type png)
  <use Images/MILP1.png>
 Package pdftex.def Info: Images/MILP1.png used on input line 151.
 (pdftex.def)             Requested size: 418.25368pt x 312.11981pt.
 
-[26 <C:/Users/Rudge-Top/Documents/Thesis_Written/ThesisWritten/Thesis/Images/MI
-LP1.png>] [27] [28] <Images/MILP2.png, id=146, 578.16pt x 431.4519pt>
+[29 <C:/Users/Rudge-Top/Documents/Thesis_Written/ThesisWritten/Thesis/Images/MI
+LP1.png>] [30] [31] <Images/MILP2.png, id=156, 578.16pt x 431.4519pt>
 File: Images/MILP2.png Graphic file (type png)
 
 <use Images/MILP2.png>
 Package pdftex.def Info: Images/MILP2.png used on input line 195.
 (pdftex.def)             Requested size: 418.25368pt x 312.11981pt.
- [29 <C:/Users/Rudge-Top/Documents/Thesis_Written/ThesisWritten/Thesis/Images/M
-ILP2.png>] [30] [31] [32]
+ [32 <C:/Users/Rudge-Top/Documents/Thesis_Written/ThesisWritten/Thesis/Images/M
+ILP2.png>] [33] [34] [35]
 File: Images/MILP1.png Graphic file (type png)
  <use Images/MILP1.png>
 Package pdftex.def Info: Images/MILP1.png used on input line 282.
@@ -1117,38 +1117,35 @@ Package pdftex.def Info: Images/MILP1.png used on input line 282.
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[33] [34] [35] [36] [37] [38]) [39]
+[36] [37] [38] [39] [40] [41]) [42]
 Chapter 6.
 
 (C:\Users\Rudge-Top\Documents\Thesis_Written\ThesisWritten\Thesis\Chapters/Resu
-lts.tex) [40
+lts.tex) [43
 
 ]
 Chapter 7.
 
 (C:\Users\Rudge-Top\Documents\Thesis_Written\ThesisWritten\Thesis\Chapters/Disc
-ussion.tex) [41
+ussion.tex) [44
 
 ]
 Chapter 8.
 
 (C:\Users\Rudge-Top\Documents\Thesis_Written\ThesisWritten\Thesis\Chapters/Conc
-lusion.tex) [42
+lusion.tex) [45
 
-] [43]
+] [46]
 Appendix A.
 (C:\Users\Rudge-Top\Documents\Thesis_Written\ThesisWritten\Thesis\Glossary.tex
 \@gls@deffile=\write8
-) [44
+) [47
 
 ]
 No file main.gls.
-[45
+[48
 
-] [46
-
-]
-(C:\Users\Rudge-Top\Documents\Thesis_Written\ThesisWritten\Thesis\main.bbl
+] (C:\Users\Rudge-Top\Documents\Thesis_Written\ThesisWritten\Thesis\main.bbl
 
 Package natbib Warning: Empty `thebibliography' environment on input line 25.
 
@@ -1156,7 +1153,8 @@ Package natbib Warning: Empty `thebibliography' environment on input line 25.
 
 Package natbib Warning: There were undefined citations.
 
-[47
+[49
+
 
 ] (C:\Users\Rudge-Top\Documents\Thesis_Written\ThesisWritten\Thesis\main.aux)
 
@@ -1188,9 +1186,9 @@ iles/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Program Files/MiK
 TeX 2.9/fonts/type1/public/amsfonts/cm/cmsy8.pfb><C:/Program Files/MiKTeX 2.9/f
 onts/type1/public/amsfonts/cm/cmti12.pfb><C:/Program Files/MiKTeX 2.9/fonts/typ
 e1/public/amsfonts/symbols/msbm10.pfb>
-Output written on main.pdf (59 pages, 362048 bytes).
+Output written on main.pdf (61 pages, 368882 bytes).
 PDF statistics:
- 257 PDF objects out of 1000 (max. 8388607)
+ 264 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
  11 words of extra memory for PDF output out of 10000 (max. 10000000)
 

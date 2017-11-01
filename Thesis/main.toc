@@ -9,62 +9,71 @@
 \contentsline {section}{\numberline {1.3}Scope}{5}
 \contentsline {section}{\numberline {1.4}Thesis Structure}{5}
 \contentsline {chapter}{\numberline {2}Background}{7}
-\contentsline {chapter}{\numberline {3}Literature Review}{8}
-\contentsline {section}{\numberline {3.1}Mining Background}{8}
-\contentsline {subsection}{\numberline {3.1.1}Strip Mining}{8}
-\contentsline {subsection}{\numberline {3.1.2}Draglines}{8}
-\contentsline {subsection}{\numberline {3.1.3}Blocks}{8}
-\contentsline {section}{\numberline {3.2}Operations Research Background}{8}
-\contentsline {subsection}{\numberline {3.2.1}Linear Programming}{9}
-\contentsline {subsubsection}{\numberline {3.2.1.1}Linear Programming}{10}
-\contentsline {subsubsection}{\numberline {3.2.1.2}Presolving}{10}
-\contentsline {subsubsection}{\numberline {3.2.1.3}Integer Programming}{10}
-\contentsline {subsubsection}{\numberline {3.2.1.4}Mixed Integer Programming}{10}
-\contentsline {subsection}{\numberline {3.2.2}Dynamic Programming}{10}
-\contentsline {subsection}{\numberline {3.2.3}Metaheuristics}{10}
-\contentsline {subsubsection}{\numberline {3.2.3.1}Approximate Dynamic Programming}{10}
-\contentsline {subsubsection}{\numberline {3.2.3.2}Genetic Algorithm}{10}
-\contentsline {chapter}{\numberline {4}Design and methodology}{11}
-\contentsline {section}{\numberline {4.1}Modelling Data}{11}
-\contentsline {subsection}{\numberline {4.1.1}Types of Input}{12}
-\contentsline {section}{\numberline {4.2}Cost of Overburden Movement}{13}
-\contentsline {subsection}{\numberline {4.2.1}Scope}{13}
-\contentsline {subsection}{\numberline {4.2.2}Assumptions}{13}
-\contentsline {section}{\numberline {4.3}Cost of a Block}{14}
-\contentsline {subsection}{\numberline {4.3.1}Assumptions}{14}
-\contentsline {subsection}{\numberline {4.3.2}Justification}{14}
-\contentsline {section}{\numberline {4.4}Cost of a Strip}{15}
-\contentsline {subsection}{\numberline {4.4.1}Assumptions}{15}
-\contentsline {subsection}{\numberline {4.4.2}Justification}{15}
-\contentsline {chapter}{\numberline {5}Implementation}{16}
-\contentsline {section}{\numberline {5.1}Modelling}{16}
-\contentsline {subsection}{\numberline {5.1.1}Spoil modelling}{17}
-\contentsline {subsubsection}{\numberline {5.1.1.1}Spoil Capacity}{17}
-\contentsline {subsubsection}{\numberline {5.1.1.2}Swell Factor}{17}
-\contentsline {section}{\numberline {5.2}Optimisation at the Block Level}{18}
-\contentsline {subsection}{\numberline {5.2.1}Mixed Integer Programming}{18}
-\contentsline {subsubsection}{\numberline {5.2.1.1}Model Formulation}{19}
-\contentsline {subsubsection}{\numberline {5.2.1.2}Implementation}{23}
-\contentsline {subsubsection}{\numberline {5.2.1.3}Results}{26}
-\contentsline {subsection}{\numberline {5.2.2}Mixed Integer Programming with Validity}{27}
-\contentsline {subsubsection}{\numberline {5.2.2.1}Model Formulation}{27}
-\contentsline {subsubsection}{\numberline {5.2.2.2}Implementation}{28}
-\contentsline {subsubsection}{\numberline {5.2.2.3}Results}{29}
-\contentsline {subsubsection}{\numberline {5.2.2.4}Results}{29}
-\contentsline {subsection}{\numberline {5.2.3}Dynammic Programming}{30}
-\contentsline {subsubsection}{\numberline {5.2.3.1}Model Formulation}{30}
-\contentsline {subsubsection}{\numberline {5.2.3.2}Implementation}{32}
-\contentsline {subsubsection}{\numberline {5.2.3.3}Results}{34}
-\contentsline {subsubsection}{\numberline {5.2.3.4}Results}{34}
-\contentsline {subsection}{\numberline {5.2.4}Comparison of Techniques}{34}
-\contentsline {section}{\numberline {5.3}Optimisation of the Strip}{34}
-\contentsline {subsection}{\numberline {5.3.1}Resource Constrained Dynamic Programming}{34}
-\contentsline {subsubsection}{\numberline {5.3.1.1}Model Formulation}{35}
-\contentsline {subsubsection}{\numberline {5.3.1.2}Implementation}{36}
-\contentsline {subsection}{\numberline {5.3.2}Resource Constrainted Dynamic Programming with Sequence Generation}{37}
-\contentsline {subsection}{\numberline {5.3.3}Comparison of Techniques}{39}
-\contentsline {chapter}{\numberline {6}Results}{40}
-\contentsline {chapter}{\numberline {7}Discussion}{41}
-\contentsline {chapter}{\numberline {8}Conclusion}{42}
-\contentsline {part}{Appendices}{43}
-\contentsline {chapter}{\numberline {A}Code Listings}{44}
+\contentsline {section}{\numberline {2.1}Mining Background}{7}
+\contentsline {subsection}{\numberline {2.1.1}Strip Mining}{8}
+\contentsline {subsection}{\numberline {2.1.2}Draglines}{8}
+\contentsline {subsection}{\numberline {2.1.3}Blocks}{8}
+\contentsline {section}{\numberline {2.2}Operations Research Background}{8}
+\contentsline {subsection}{\numberline {2.2.1}Linear Programming}{8}
+\contentsline {subsection}{\numberline {2.2.2}Dynamic Programming}{9}
+\contentsline {subsection}{\numberline {2.2.3}Metaheuristics}{10}
+\contentsline {subsubsection}{\numberline {2.2.3.1}Genetic Algorithm}{10}
+\contentsline {chapter}{\numberline {3}Literature Review}{11}
+\contentsline {section}{\numberline {3.1}Mining Background}{11}
+\contentsline {subsection}{\numberline {3.1.1}Strip Mining}{11}
+\contentsline {subsection}{\numberline {3.1.2}Draglines}{11}
+\contentsline {subsection}{\numberline {3.1.3}Blocks}{11}
+\contentsline {section}{\numberline {3.2}Operations Research Background}{11}
+\contentsline {subsection}{\numberline {3.2.1}Linear Programming}{12}
+\contentsline {subsubsection}{\numberline {3.2.1.1}Linear Programming}{13}
+\contentsline {subsubsection}{\numberline {3.2.1.2}Presolving}{13}
+\contentsline {subsubsection}{\numberline {3.2.1.3}Integer Programming}{13}
+\contentsline {subsubsection}{\numberline {3.2.1.4}Mixed Integer Programming}{13}
+\contentsline {subsection}{\numberline {3.2.2}Dynamic Programming}{13}
+\contentsline {subsection}{\numberline {3.2.3}Metaheuristics}{13}
+\contentsline {subsubsection}{\numberline {3.2.3.1}Approximate Dynamic Programming}{13}
+\contentsline {subsubsection}{\numberline {3.2.3.2}Genetic Algorithm}{13}
+\contentsline {chapter}{\numberline {4}Design and methodology}{14}
+\contentsline {section}{\numberline {4.1}Modelling Data}{14}
+\contentsline {subsection}{\numberline {4.1.1}Types of Input}{15}
+\contentsline {section}{\numberline {4.2}Cost of Overburden Movement}{16}
+\contentsline {subsection}{\numberline {4.2.1}Scope}{16}
+\contentsline {subsection}{\numberline {4.2.2}Assumptions}{16}
+\contentsline {section}{\numberline {4.3}Cost of a Block}{17}
+\contentsline {subsection}{\numberline {4.3.1}Assumptions}{17}
+\contentsline {subsection}{\numberline {4.3.2}Justification}{17}
+\contentsline {section}{\numberline {4.4}Cost of a Strip}{18}
+\contentsline {subsection}{\numberline {4.4.1}Assumptions}{18}
+\contentsline {subsection}{\numberline {4.4.2}Justification}{18}
+\contentsline {chapter}{\numberline {5}Implementation}{19}
+\contentsline {section}{\numberline {5.1}Modelling}{19}
+\contentsline {subsection}{\numberline {5.1.1}Spoil modelling}{20}
+\contentsline {subsubsection}{\numberline {5.1.1.1}Spoil Capacity}{20}
+\contentsline {subsubsection}{\numberline {5.1.1.2}Swell Factor}{20}
+\contentsline {section}{\numberline {5.2}Optimisation at the Block Level}{21}
+\contentsline {subsection}{\numberline {5.2.1}Mixed Integer Programming}{21}
+\contentsline {subsubsection}{\numberline {5.2.1.1}Model Formulation}{22}
+\contentsline {subsubsection}{\numberline {5.2.1.2}Implementation}{26}
+\contentsline {subsubsection}{\numberline {5.2.1.3}Results}{29}
+\contentsline {subsection}{\numberline {5.2.2}Mixed Integer Programming with Validity}{30}
+\contentsline {subsubsection}{\numberline {5.2.2.1}Model Formulation}{30}
+\contentsline {subsubsection}{\numberline {5.2.2.2}Implementation}{31}
+\contentsline {subsubsection}{\numberline {5.2.2.3}Results}{32}
+\contentsline {subsubsection}{\numberline {5.2.2.4}Results}{32}
+\contentsline {subsection}{\numberline {5.2.3}Dynammic Programming}{33}
+\contentsline {subsubsection}{\numberline {5.2.3.1}Model Formulation}{33}
+\contentsline {subsubsection}{\numberline {5.2.3.2}Implementation}{35}
+\contentsline {subsubsection}{\numberline {5.2.3.3}Results}{37}
+\contentsline {subsubsection}{\numberline {5.2.3.4}Results}{37}
+\contentsline {subsection}{\numberline {5.2.4}Comparison of Techniques}{37}
+\contentsline {section}{\numberline {5.3}Optimisation of the Strip}{37}
+\contentsline {subsection}{\numberline {5.3.1}Resource Constrained Dynamic Programming}{37}
+\contentsline {subsubsection}{\numberline {5.3.1.1}Model Formulation}{38}
+\contentsline {subsubsection}{\numberline {5.3.1.2}Implementation}{39}
+\contentsline {subsection}{\numberline {5.3.2}Resource Constrainted Dynamic Programming with Sequence Generation}{40}
+\contentsline {subsection}{\numberline {5.3.3}Comparison of Techniques}{42}
+\contentsline {chapter}{\numberline {6}Results}{43}
+\contentsline {chapter}{\numberline {7}Discussion}{44}
+\contentsline {chapter}{\numberline {8}Conclusion}{45}
+\contentsline {part}{Appendices}{46}
+\contentsline {chapter}{\numberline {A}Code Listings}{47}
