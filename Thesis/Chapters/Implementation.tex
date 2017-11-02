@@ -146,13 +146,24 @@ This entire process is then wrapped into one function so that the cost of a bloc
 		\end{lstlisting}
 The only unique or interesting part of this function is that if the block is not feasible then the function will return a cost of infinity, this will mean that the block will not be used in the optimal or feasible soluion of a sequence of blocks in a strip. Each call of the function take in the start, end and state of the spoil, allowing the block to be calculated to return the cost and updated spoil, as well as the time taken to calculate the MIP. Both cost and resulting spoil are vital to the calculation of the strip, and are the two desired outputs of any model describing the actions taken within a block. 
 \subsubsection{Results}
+A set of 10 generated cases were selected for comparing my algoriths and models against each other, the first five cases are on an open spoil and increase in complexity, the final five cases have spoil channels of increasing complexity. Where possible the results of potential blocks captured in the same locations of each mine are considered. In this section of results, prior to comparison to other such methods the type of solution recieved will be inspected.	It should be noted that Dataset 1 is the real world data supplied and all other datatypes are generated for the purposes of additional testing. 
 \begin{figure}[h]
-\caption{Block cost comparison on an empty spoil}
-\label{MIP1}
-\includegraphics[width=\textwidth]{MILP1.png}
+\label{MIP1-1}
+\caption{Block Analysis for real world Data}
+\includegraphics[width=\textwidth]{MILP1_D1.png}
+% \label{MIP1-2}
+% \includegraphics[width=\textwidth]{MILP1_D10.png}
 \end{figure}
-The above figure \ref{MIP1} shows that the block is peicewise linear when calculated on an open spoil, that is the blocks cost can be represented as a series of linear functions which may appropriatly approximate the block, this interestingly could be used as a potential alternative to the solution of a 
+The above figure \ref{MIP1-1} shows that the block is peicewise linear when calculated on an open spoil, that is the blocks cost can be represented as a series of linear functions which may appropriatly approximate the block, this interestingly could be used as a potential alternative to the solution of a MIP problem. However the block will consistently increase in cost as the length increases, similarly as the size of the block increases as does the time taken to calculate and simulate its values. As can be seen in  figure \ref{MIP1-7} the dragline behavior is similar although the cost will plateau at some points given the additional constraints of the spoil. This result suggests that while the cost of a block is linear under no or weak constraints any linearisation or simplification would not hold for blocks of more constrained or complex spoil channels. Therefore the use of a mixed integer linear program is still the best approach as it is capable of calculating the cost of a block rapidly and ensuring an accurate and optimal solution to the cost of a block. 
 
+\begin{figure}[h!]
+\label{MIP1-1}
+\caption{Block Analysis for generated Data}
+\includegraphics[width=\textwidth]{MILP1_D7.png}
+% \label{MIP1-2}
+% \includegraphics[width=\textwidth]{MILP1_D10.png}
+\end{figure}
+The steroetypical increase in the cost of a block can be dependant on both the length of the block and the state of the spoil, however in this formulation the reach of the dragline is not properly considered. While this is acceptable for data sets with no or weak spoil constraints it will not function properly formore constrained blocks as the current model will incur a large cost to generate an infeasible solution where the suggested spoil section used is outside the reach of the dragline. 
 \subsection{Mixed Integer Programming with Validity}
 This model is an updated version of the Mixed Integer model with only one added array of data and one additional constraint, however this single constraint makes a huge differences to the complexity and accuracy of the model. The constraint that a dragline cannot move to or reach every point in a block or in the spoil will constraint the areas where overburden can be distributed in the spoil section. This constraint was not initially obvious as typically the dragline will place spoil in local areas rather than in sections that would be out of its reach. However as the availability of spoil room is reduced the cost associated with this action is seen as preferable rather than an infeasible solution. This was only found after an implementation of the strip optimisation was complete, and as such can be seen as an updated model. 
 \subsubsection{Model Formulation}
@@ -189,14 +200,15 @@ def Calc_Valid(self):
 \end{lstlisting}
 Here the array size is set up, we only consider areas within the block and spoil and as such this will reduce the size of the array and allow for more rapid calculation of results. Once this is done for every possible combination of blocks in this window a check is done to ensure that it is a valid movement. 
 \subsubsection{Results}
-\subsubsection{Results}
+The results of the real world data should be the same as that of the prior formulation, this is because the additional constraint will only typically be applied when the spoil channel is crowded and potential solutions are restricted. When not in this situation the spoil will be placed in the lowest cost location possible, which is typically within the reach of the dragline. Despite the exact same cost for the block throughout this dataset the time taken per calculation is increased, this is due to both the additional constraint and the need to calculate the set of valid positions for each location. This increased runtime suggests that a combination of both techniqes could be valid, using the faster method on open spoil and the slower onamore constrianed system. 
 \begin{figure}[h]
 \caption{Block cost comparison on an empty spoil}
-\label{MIP2}
-\includegraphics[width=\textwidth]{MILP2.png}
+\label{MIP-1}
+\includegraphics[width=\textwidth]{MILP2_D1.png}
 \end{figure}
-
+The results suggested in figure \ref{mip2dp7} suggest different solutions to those provided in figure \ref{MIP1-2}, this is due to the proper consideration of spoil location and capacity as well as the added constraint on reachability causes the cost of the block to be more expensive. This additionally will have a differeing spoil to that of the prior model and the individual actionsmay be drastically different. This model is more robust as it works in a constrained or underconstrained enviroment. However other formulation methods should be considered as the run time of a block increases with both the complexity and the length of the block. 
 \subsection{Dynammic Programming}
+Dynamic programming is an obvious approach to the problem, as the use of memeotisation will deecrease the amountof calculations required to find the opitmal solution, unlike a MIP the dynamic program will recusrivly consider all potential solutions which while thorough could be suffciently fast for the purposes of block cost optimisation. 
 \subsubsection{Model Formulation}
 \paragraph*{States}
 \begin{align}
@@ -275,16 +287,16 @@ def GetData(Start,End,Mine,Spoil):
 
 \end{lstlisting}
 However in the memeotisation it is vital to include the state of the spoil, unfortunately this is likely to be unique and as such will not occur very often, this reduces the amount of memory calls made and the runtime of the program will increase, however if the state is not in the memory then the optimal solution of the problem has no guarantee to be returned, and instead a feasible solution will be supplied. 
+
 \subsubsection{Results}
-\subsubsection{Results}
+The cost of a block for real world data does not match the results suggested by the prior two methods, this is due to the incorrect use of memotisation will mean that optimal solutions cannot be found and the solutions supplied are feasible at best, however it should be noted that this formulation will generate the cost of a block drastiacally quicker than the two prior models, however the assumption can be made that any small saving in code time is negated by the huge loss in time taken to mine the block an dother ineffcient planning. 
 \begin{figure}[h]
-\caption{Block cost comparison on an empty spoil}
+\caption{Block analysis on real world data }
 \label{DP1}
-\includegraphics[width=\textwidth]{MILP1.png}
+\includegraphics[width=\textwidth]{DP_D1.png}
 \end{figure}
-
-
-\subsection{Comparison of Techniques}
+However when the state of the spoil was introduced to the memotisation, the run time of the solution increased massivley, a hard timeout of 5 minutes was applied and no solution was found, further investigation showed that in five minutes A funciton call was performed $10^7$ times. This amount of fundtion calls implies that the uniquness of the spoil will limit the usability of the memotisation, and in fact only 8\% of those function calls were able to be avoided due to memotisation. This presents the problem that the optimal solution will take too long to calculate yet the feasible solution is incredibly fast to calculate. The poor performance of the dynamic programming technique is due in no small part to both the huge amount of possibilities but also the uniqueness of the states, the combination of these two factors suggests that the approach may not be appropriate for this problem, however some of the methods learnt here could be refined for other more fitting areas of the implementation.  
+% \subsection{Comparison of Techniques}
 
 \section{Optimisation of the Strip}
 % \subsection{Mixed Integer Programming}
@@ -344,7 +356,7 @@ The value function calculates the cost associated with a given action based on t
 
 \end{lstlisting}
 \subsection{Resource Constrainted Dynamic Programming with Sequence Generation}
-The strongest constraint in the formulation of the strip is that the sum of all blocks must be equal to the length of the strip, that is $\sum B = L_s$, however in the prior formulation this constraint is not considered, this constraint is applied by generating all sequences of potential blocks that will equal the length of the mine. This set of potential solutions is much less than the potential solutions without this constraint and therefore the application of such a constraint will reduce the exploration of the dynammic program, sequence generation is done recursively as seen in the below code snippet 
+The strongest constraint in the formulation of the strip is that the sum of all blocks must be equal to the length of the strip, that is $\sum B = L_s$, however in the prior formulation this constraint is not considered, this constraint is applied by generating all sequences of potential blocks that will equal the length of the mine. This set of potential solutions is much less than the potential solutions without this constraint and therefore the application of such a constraint will reduce the exploration of the dynammic program, sequence generation is done recursively as seen in the below code snippet. 
 \begin{lstlisting}[language = python]
 def GenBranchs(self,current,end,min,max,past):
 	# count = count+1
@@ -397,7 +409,10 @@ def PrunedCost(self):
 			self.Prunefinal[str(solution)] = self.prunedict[str([solution[i] for i in range(Block)])]
 
 \end{lstlisting}
-\subsection{Comparison of Techniques}
+% \subsection{Comparison of Techniques}
+\subsubsection{Results}
+The implementation of the dynamic program without any preprocessing of potential solutions was unable to reach any final solution for a mine of length 500m, the result of this attempt was a five hour long simulation in which $10^16$ state combinations were explored before the program caused the computer to crash, this was found to be a reoccuring problem and was a key motivator for a method to reduce the amount of potential solutions considered. \\
+Most solutions to the formualtion can overshoot the problem by one block or undershoot it by less than one block, the set of solutions that can exacly equal the length of the mine is a small subset of the total solution space. The set of these sequences was generated and for a 500m strip was found to contain $10^9$ uniqur solutions to the problem. However the runtime of this sequence generation is $O(2^n)$ where n is the set of possible lengths the block could be. This runtime is not ideal for high resolution data however when compared to the previous method a solution is still found within three hours. The time taken to generate all possible sequences for a strip of 500m at a resolution of 1m is 900 seconds, however at a resolution of only 5m this is reduced to 200 seconds and $10^6$ solutions. Therefore a quick solution could be used as a hueristic for potential better solutions to reduce the amount of time taken. The time spent in the dynammic program however is still dramatically reduced as the runtime of the program is $O(|A|S^2|)$ and as the statespace is reduced by a magnitude of 7 the states processed is also hugely reduced. 
 
 
 

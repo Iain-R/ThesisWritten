@@ -131,12 +131,6 @@ Iain Rudge
 
 
 \chapter{Acknowledgements}
-
-
-
-
-\cleardoublepage
-
 \chapter{Abstract}
 
 % Notice that all \include files are chapters -- a logical division.
@@ -158,7 +152,7 @@ Iain Rudge
 % If file los.tex begins with ``\chapter{List of Symbols}'':
 % \include{los}
 
-\cleardoublepage
+\newpage
 
 \mainmatter
 
@@ -182,6 +176,8 @@ Iain Rudge
 		SpoilCap(n,m) & The amount of spoil that can be dumped into the exhausted block (n,m) this will be related in some manner to the amount of material removed from the block previously.
 		\\
 		\hline \\
+		\end{tabular}
+			\begin{tabular}{p{5cm} p{11cm}} \hline
 		L(n,m) & The length of the nth block in the mth strip, this is one of the variables that our model aims to solve for. This is one of the outputs of the model \\ \hline \\ 
 		W(n,m) & The width of the nth block in the mth strip, this is one of the variables that our model aims to solve for. This is one of the outputs of the model \\ \hline \\ 
 		%		\[Spoil Capacity \in G,Dim\]
@@ -207,12 +203,11 @@ Iain Rudge
 \chapter{Results}
 \input{Chapters/Results}
 
-\chapter{Discussion}
-\input{Chapters/Discussion}
+% \chapter{Discussion}
+% \input{Chapters/Discussion}
 
 \chapter{Conclusion}
 \input{Chapters/Conclusion}
-
 
 \appendix
 
