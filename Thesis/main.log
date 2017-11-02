@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2015.6.1)  2 NOV 2017 12:34
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2015.6.1)  2 NOV 2017 15:31
 entering extended mode
 **C:/Users/Rudge-Top/Documents/Thesis_Written/ThesisWritten/Thesis/main.tex
 (C:/Users/Rudge-Top/Documents/Thesis_Written/ThesisWritten/Thesis/main.tex
@@ -909,9 +909,9 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 ) [7
 
 ] [8]
-Overfull \hbox (4.6378pt too wide) in paragraph at lines 56--56
- [][] []\OT1/cmr/m/n/12 Resource Con-strainted Dy-namic Pro-gram-ming with Se-q
-uence 
+Overfull \hbox (0.39479pt too wide) in paragraph at lines 56--56
+ [][] []\OT1/cmr/m/n/12 Resource Con-strained Dy-namic Pro-gram-ming with Se-qu
+ence 
  []
 
 )
@@ -1160,34 +1160,58 @@ lts.tex
 Package natbib Warning: Citation `A*Search' on page 44 undefined on input line 
 5.
 
-
-LaTeX Warning: Reference `tableres' on page 44 undefined on input line 5.
-
-
-LaTeX Warning: Reference `tableres' on page 44 undefined on input line 28.
-
-
-LaTeX Warning: Reference `RESMIP' on page 44 undefined on input line 28.
-
 [44
 
-]) [45]
+] [45] <Images/MIP_Demo1.png, id=206, 578.16pt x 431.4519pt>
+File: Images/MIP_Demo1.png Graphic file (type png)
+
+<use Images/MIP_Demo1.png>
+Package pdftex.def Info: Images/MIP_Demo1.png used on input line 57.
+(pdftex.def)             Requested size: 418.25368pt x 312.11981pt.
+
+<Images/MIP_Demo2.png, id=207, 578.16pt x 431.4519pt>
+File: Images/MIP_Demo2.png Graphic file (type png)
+
+<use Images/MIP_Demo2.png>
+Package pdftex.def Info: Images/MIP_Demo2.png used on input line 63.
+(pdftex.def)             Requested size: 418.25368pt x 312.11981pt.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[46 <C:/Users/Rudge-Top/Documents/Thesis_Written/ThesisWritten/Thesis/Images/MI
+P_Demo1.png>]
+Overfull \hbox (35.96599pt too wide) in paragraph at lines 70--86
+ [] 
+ []
+
+[47 <C:/Users/Rudge-Top/Documents/Thesis_Written/ThesisWritten/Thesis/Images/MI
+P_Demo2.png>]
+Overfull \hbox (12.96889pt too wide) in paragraph at lines 89--106
+ [] 
+ []
+
+
+Package natbib Warning: Citation `IntoOpenPit' on page 48 undefined on input li
+ne 107.
+
+[48]) [49]
 Chapter 7.
 
 (C:\Users\Rudge-Top\Documents\Thesis_Written\ThesisWritten\Thesis\Chapters/Conc
-lusion.tex) [46
+lusion.tex) [50
 
-] [47]
+] [51]
 Appendix A.
 (C:\Users\Rudge-Top\Documents\Thesis_Written\ThesisWritten\Thesis\Glossary.tex
 \@gls@deffile=\write8
-) [48
+) [52
 
 ]
 No file main.gls.
-[49
+[53
 
-] [50
+] [54
 
 ]
 (C:\Users\Rudge-Top\Documents\Thesis_Written\ThesisWritten\Thesis\main.bbl
@@ -1198,7 +1222,7 @@ Package natbib Warning: Empty `thebibliography' environment on input line 25.
 
 Package natbib Warning: There were undefined citations.
 
-[51
+[55
 
 ] (C:\Users\Rudge-Top\Documents\Thesis_Written\ThesisWritten\Thesis\main.aux)
 
@@ -1209,13 +1233,13 @@ LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 12701 strings out of 493921
- 180314 string characters out of 3147271
- 524494 words of memory out of 3000000
- 15706 multiletter control sequences out of 15000+200000
+ 12714 strings out of 493921
+ 180569 string characters out of 3147271
+ 525549 words of memory out of 3000000
+ 15717 multiletter control sequences out of 15000+200000
  13108 words of font info for 50 fonts, out of 3000000 for 9000
  841 hyphenation exceptions out of 8191
- 46i,19n,75p,1825b,1756s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 46i,19n,75p,1842b,1756s stack positions out of 5000i,500n,10000p,200000b,50000s
 <C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/Pr
 ogram Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmcsc10.pfb><C:/Program F
 iles/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/Program Files/MiK
@@ -1230,9 +1254,9 @@ iles/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Program Files/MiK
 TeX 2.9/fonts/type1/public/amsfonts/cm/cmsy8.pfb><C:/Program Files/MiKTeX 2.9/f
 onts/type1/public/amsfonts/cm/cmti12.pfb><C:/Program Files/MiKTeX 2.9/fonts/typ
 e1/public/amsfonts/symbols/msbm10.pfb>
-Output written on main.pdf (63 pages, 476536 bytes).
+Output written on main.pdf (67 pages, 593971 bytes).
 PDF statistics:
- 274 PDF objects out of 1000 (max. 8388607)
+ 291 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
- 21 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 31 words of extra memory for PDF output out of 10000 (max. 10000000)
 
