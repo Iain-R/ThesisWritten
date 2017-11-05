@@ -17,10 +17,10 @@
 
 % lets not go straight in with FPGA
 % 
-% \section{Topic}
+\section{Topic}
 % The topic of this thesis is the mathematical modelling and optimisation of projected dragline mining by modelling the terrain of the strip as a density function. The projected planning of the dragline will aim to make use of minor simplifications or novel ways of modelling in order to create an efficient method for dragline excavation. This thesis does not explicitly intend to work with the software of others, however as explained in 1.1 a major point of this project is the ability to utilise the results of the thesis in other areas.
-Draglines are massive machines used in open cut mining, often having boomlengths of up to 100m these massive machines will move through a mine in a series of strips. Each strip in a mine can be broken down into fundamenatal blocks which have an internal movement pattern, depending on the machine the allowable sizes of these blocks will vary, as will the internal patterns. The purpose of this thesis is to develop a method of calculating block lengths for each strip in a mine such that if the time taken varies with the length of the block, then the minimal time spent per strip is found. However this method is not only useful for the calculation of an optimal path, the planning of blocks in a mine is an untapped topic of research, while products such as MineMax and polymathian exist for pit mines and underground mines, no software packages exist for the planning and optimisation of a strip mine with regards to overburden removal with draglines. (http://www.carlsonsw.com/solutions/mining-solutions/surface-mining/) While packages like Carlson mining solutions does deliver a strip miningm modeller it does not generate the block dimensions within a strip, nor how these should or could be planned. \\
-As No methods exist in the space therefore the topic of strip generation in mining is valid for the exploration of throughout this thesis, while here only one strip is considered at a time the block dimension calculations are independant from strip to strip and as such will be able to be calculated as the mine is further explored. 
+Draglines are massive machines used in open cut mining\cite{Bucyrus-Draglines}, weighing up to twelve tonnes \cite{DigBig} and with booms of up to 132.5 metres\cite{DigBig} these massive machines will move through a mine in a series of strips\cite{ORPlanning}. Each strip in a mine can be broken down into fundamental blocks which have an internal movement pattern\cite{A*Search}, depending on the machine the allowable sizes of these blocks will vary, as will the internal patterns. The purpose of this thesis is to develop a method of calculating block lengths for each strip in a mine such that if the time taken varies with the length of the block, then the minimal time spent per strip is found. However this method is not only useful for the calculation of an optimal path, the planning of blocks in a mine is an untapped topic of research, while products such as MineMax\cite{minemax} and polymathian\cite{polymathian} exist for pit mines and underground mines, no software packages exist for the planning and optimisation of a strip mine with regards to overburden removal with draglines.  While packages like those provided by Carlson mining solutions provide software capable of modelling a strip mine the algorithmic calculation of block dimensions within a strip is not considered. \cite{carlson} \\
+As No methods exist in the space therefore the topic of strip generation in mining is valid for the exploration of throughout this thesis, while here only one strip is considered at a time the block dimension calculations are independent from strip to strip and as such will be able to be calculated as the mine is further explored. 
 
 
 \section{Problem Definition}
@@ -45,7 +45,7 @@ The motivation of this thesis is then in part based on the work of others in the
 
 In conclusion the motivation for this thesis is multi layered, at its core the main motivation is the financial benefit of optimisation in the utilisation of draglines, however many other researchers have been working on this task for decades, and as such any individual method is not feasible. Therefore this thesis seeks to help improve the runtime efficiency of current models by supplying a time efficient alternative in determining the optimal solutions for block size in conventional drag lines. 
 
-\section{Scope}
+% \section{Scope}
 
 % \section{Assumptions}
 % \section{Applications}
@@ -55,11 +55,11 @@ In conclusion the motivation for this thesis is multi layered, at its core the m
 \section{Thesis Structure}
 \begin{description}
     \item[Introduction] Introduces the motivation and goals of the thesis while also properly defining the problem , variables and notation used throughout the thesis.
-    \item[Background] A foccused review of neccisarry information and background knowledge that is referenced and used throughout the thesis in the development of the algorithm, as well as methods and information that was considered throughout. 
+    \item[Background] A focused review of necessary information and background knowledge that is referenced and used throughout the thesis in the development of the algorithm, as well as methods and information that was considered throughout. 
     \item[Literature Review] A review of prior art and techniques that can be compared to the methods outlined in this thesis.
     \item[Design and Methodology] A systems level description of the design of the algorithm, including the assumptions and considerations made for each design choice.
     \item[Implementation] A detailed description of the implementation of each section, including discarded methods and results of the sections.
     \item[Results] Results of testing the software against prior art as well as results generated for the final strip mine,.
-    \item[Discussion] A justification of assumptions and decisions made as well as a final comparrison to other methods mentioned 
+    \item[Discussion] A justification of assumptions and decisions made as well as a final comparison to other methods mentioned 
     \item[Conclusion] A summary of the thesis with a focus on the future of the project. 
 \end{description}

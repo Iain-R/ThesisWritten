@@ -1,26 +1,136 @@
-This is BibTeX, Version 0.99dThe top-level auxiliary file: main.aux
-The style file: IEEEtranN.bst
-I couldn't open database file References.bib.bib
----line 173 of file main.aux
- : \bibdata{IEEEabrv,References.bib
- :                                 }
+This is BibTeX, Version 0.99d (TeX Live 2016/W32TeX)
+Capacity: max_strings=100000, hash_size=100000, hash_prime=85009
+The top-level auxiliary file: main.aux
+White space in argument---line 78 of file main.aux
+ : \citation{Dynamic
+ :                   Model}
 I'm skipping whatever remains of this command
-Database file #1: IEEEabrv.bib
-Warning--I didn't find a database entry for "DraglineDecade"
-Warning--I didn't find a database entry for "ExportStats"
-Warning--I didn't find a database entry for "PacificCoal"
-Warning--I didn't find a database entry for "IntoOpenPit"
-Warning--I didn't find a database entry for "AutoEarthmoving"
-Warning--I didn't find a database entry for "IntroRobo"
-Warning--I didn't find a database entry for "CreativeEngineering"
-Warning--I didn't find a database entry for "VisionRobot"
-Warning--I didn't find a database entry for "OperatorPerformance"
-Warning--I didn't find a database entry for "ORPlanning"
-Warning--I didn't find a database entry for "A*Search"
--- IEEEtranN.bst version 1.13 (2008/09/30) by Michael Shell.
+The style file: IEEEtranN.bst
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Reallocated wiz_functions (elt_size=4) to 6000 items from 3000.
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Database file #1: References.bib.bib
+I was expecting a `,' or a `}'---line 65 of file References.bib.bib
+ : @article{Dynamic 
+ :                  Model,
+I'm skipping whatever remains of this entry
+Warning--entry type for "AutoEarthmoving" isn't style-file defined
+--line 179 of file References.bib.bib
+Warning--entry type for "A*Search" isn't style-file defined
+--line 191 of file References.bib.bib
+Warning--entry type for "ORPlanning" isn't style-file defined
+--line 203 of file References.bib.bib
+Warning--entry type for "PacificCoal" isn't style-file defined
+--line 215 of file References.bib.bib
+Warning--entry type for "Dmove" isn't style-file defined
+--line 487 of file References.bib.bib
+-- IEEEtranN.bst version 1.14 (2015/08/26) by Michael Shell.
 -- http://www.michaelshell.org/tex/ieeetran/bibtex/
 -- See the "IEEEtran_bst_HOWTO.pdf" manual for usage information.
 ** Natbib version - not for normal IEEE work.
+Reallocated glb_str_ptr (elt_size=4) to 20 items from 10.
+Reallocated global_strs (elt_size=20001) to 20 items from 10.
+Reallocated glb_str_end (elt_size=4) to 20 items from 10.
+Too many commas in name 1 of "G.Winstanley, K.Usher, P.Corke, M.Dunbabin, J.Roberts" for entry DraglineDecade
+while executing---line 2715 of file IEEEtranN.bst
+Too many commas in name 1 of "G.Winstanley, K.Usher, P.Corke, M.Dunbabin, J.Roberts" for entry DraglineDecade
+while executing---line 2715 of file IEEEtranN.bst
+Too many commas in name 1 of "ormen, T. H.; Leiserson, C. E.; Rivest, R. L.; Stein, C." for entry MITDynamic
+while executing---line 2715 of file IEEEtranN.bst
+Too many commas in name 1 of "ormen, T. H.; Leiserson, C. E.; Rivest, R. L.; Stein, C." for entry MITDynamic
+while executing---line 2715 of file IEEEtranN.bst
+Too many commas in name 1 of "G.Winstanley, K.Usher, P.Corke, M.Dunbabin, J.Roberts" for entry DraglineDecade
+while executing---line 2729 of file IEEEtranN.bst
+Too many commas in name 1 of "G.Winstanley, K.Usher, P.Corke, M.Dunbabin, J.Roberts" for entry DraglineDecade
+while executing---line 2729 of file IEEEtranN.bst
+Too many commas in name 1 of "G.Winstanley, K.Usher, P.Corke, M.Dunbabin, J.Roberts" for entry DraglineDecade
+while executing---line 2729 of file IEEEtranN.bst
+Too many commas in name 1 of "G.Winstanley, K.Usher, P.Corke, M.Dunbabin, J.Roberts" for entry DraglineDecade
+while executing---line 2729 of file IEEEtranN.bst
+Warning--empty journal in DraglineDecade
+Warning--empty year in DraglineDecade
+Warning--missing publisher in IntoOpenPit
+Warning--empty year in IntoOpenPit
+Warning--missing publisher in IntroRobo
+Warning--empty year in IntroRobo
+Warning--empty journal in CreativeEngineering
+Warning--empty year in CreativeEngineering
+Warning--empty journal in VisionRobot
+Warning--empty year in VisionRobot
+Warning--empty journal in OperatorPerformance
+Warning--empty year in OperatorPerformance
+Warning--empty journal in Workpls
+Warning--empty year in Workpls
+Warning--missing publisher in SMEBOOK
+Warning--missing publisher in Intro2or
+Warning--missing publisher in LPII
+Warning--empty year in LPII
+Warning--missing publisher in oriNTRO
+Warning--missing publisher in LP
+Warning--empty year in LP
+Warning--missing publisher in Bellman
+Warning--empty year in Bellman
+Too many commas in name 1 of "ormen, T. H.; Leiserson, C. E.; Rivest, R. L.; Stein, C." for entry MITDynamic
+while executing---line 2729 of file IEEEtranN.bst
+Too many commas in name 1 of "ormen, T. H.; Leiserson, C. E.; Rivest, R. L.; Stein, C." for entry MITDynamic
+while executing---line 2729 of file IEEEtranN.bst
+Too many commas in name 1 of "ormen, T. H.; Leiserson, C. E.; Rivest, R. L.; Stein, C." for entry MITDynamic
+while executing---line 2729 of file IEEEtranN.bst
+Too many commas in name 1 of "ormen, T. H.; Leiserson, C. E.; Rivest, R. L.; Stein, C." for entry MITDynamic
+while executing---line 2729 of file IEEEtranN.bst
+Warning--missing publisher in MITDynamic
+Warning--empty year in MITDynamic
+Warning--missing publisher in DPfound
+Warning--missing publisher in Meta
+Warning--missing publisher in GA
+Warning--empty journal in ORLeslie
+Warning--missing publisher in MiningHandbook
+Warning--empty year in MiningHandbook
+Warning--empty journal in Costs
+Warning--empty year in Costs
 
 Done.
-(There was 1 error message)
+You've used 33 entries,
+            4855 wiz_defined-function locations,
+            1095 strings with 11277 characters,
+and the built_in function-call counts, 14310 in all, are:
+= -- 1224
+> -- 240
+< -- 33
++ -- 136
+- -- 68
+* -- 585
+:= -- 2500
+add.period$ -- 54
+call.type$ -- 33
+change.case$ -- 53
+chr.to.int$ -- 32
+cite$ -- 66
+duplicate$ -- 1094
+empty$ -- 1342
+format.name$ -- 104
+if$ -- 3060
+int.to.chr$ -- 2
+int.to.str$ -- 34
+missing$ -- 180
+newline$ -- 139
+num.names$ -- 99
+pop$ -- 663
+preamble$ -- 1
+purify$ -- 33
+quote$ -- 2
+skip$ -- 1119
+stack$ -- 0
+substring$ -- 80
+swap$ -- 477
+text.length$ -- 0
+text.prefix$ -- 0
+top$ -- 6
+type$ -- 423
+warning$ -- 33
+while$ -- 66
+width$ -- 0
+write$ -- 329
+(There were 14 error messages)
